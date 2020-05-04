@@ -1,0 +1,56 @@
+# depslib dependency file v1.0
+1588619725 source:c:\users\ivona\desktop\jgsp\main.cpp
+	<iostream>
+	<vector>
+	"skladiste.hpp"
+	"karte.hpp"
+	"usluge.hpp"
+	"ekonomija.hpp"
+	"saobracaj.hpp"
+	"vozilo.hpp"
+	"zaposleni.hpp"
+
+1588613145 c:\users\ivona\desktop\jgsp\skladiste.hpp
+
+1588616163 c:\users\ivona\desktop\jgsp\karte.hpp
+	"datum.hpp"
+
+1588615323 c:\users\ivona\desktop\jgsp\datum.hpp
+
+1588616045 c:\users\ivona\desktop\jgsp\usluge.hpp
+	"datum.hpp"
+
+1588616836 c:\users\ivona\desktop\jgsp\ekonomskisektor.hpp
+	"prodaja.hpp"
+	"nabavka.hpp"
+
+1588616250 c:\users\ivona\desktop\jgsp\prodaja.hpp
+	"karte.hpp"
+	"usluge.hpp"
+
+1588613145 c:\users\ivona\desktop\jgsp\nabavka.npp.h
+
+1588616775 c:\users\ivona\desktop\jgsp\nabavka.hpp
+	"datum.hpp"
+
+1588617331 c:\users\ivona\desktop\jgsp\vozilo.hpp
+	"gorivo.hpp"
+
+1588617769 c:\users\ivona\desktop\jgsp\gorivo.hpp
+
+1588618828 c:\users\ivona\desktop\jgsp\saobracajnisektor.hpp
+	"autobus.hpp"
+
+1588618786 c:\users\ivona\desktop\jgsp\autobus.hpp
+	"vozilo.hpp"
+
+1588619074 c:\users\ivona\desktop\jgsp\ekonomija.hpp
+	"prodaja.hpp"
+	"nabavka.hpp"
+
+1588619039 c:\users\ivona\desktop\jgsp\saobracaj.hpp
+	"autobus.hpp"
+
+1588620038 c:\users\ivona\desktop\jgsp\zaposleni.hpp
+	"datum.hpp"
+
