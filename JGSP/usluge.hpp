@@ -13,7 +13,7 @@ protected:
     int kolicina;
     double cena;
 public:
-    Usluge(Trajanje tip, SveUsluge usluga, double c, int k, int d, int m, int g):datumProdaje(d,m,g){
+    Usluge(Trajanje tip = jednokratno, SveUsluge usluga = reklama, double c = 0, int k = 0, int d = 1, int m = 1, int g = 2000):datumProdaje(d,m,g){
         tipPoTrajanju = tip;
         tipUsluge = usluga;
         kolicina = k;

@@ -8,7 +8,7 @@ protected:
     TipGoriva tip;
     int kolicina;
 public:
-    Gorivo(TipGoriva t, int k){
+    Gorivo(TipGoriva t = dizel, int k = 0){
         kolicina = k;
         tip = t;
     }

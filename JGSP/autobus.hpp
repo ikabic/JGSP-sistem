@@ -10,7 +10,7 @@ protected:
     int brojMesta;
     TipPrevozaAutobusa tip;
 public:
-    Autobus(int brMesta, TipPrevozaAutobusa t, string mark, string registr, int godine, TipGoriva gorivo, int k, int d, int m, int g):Vozilo(mark, registr, godine, gorivo, k, d, m, g){
+    Autobus(int brMesta = 50, TipPrevozaAutobusa t = javni, string mark = "", string registr = "", int godine = 0, TipGoriva gorivo = dizel, int k = 0, int d = 1, int m = 1, int g = 2000):Vozilo(mark, registr, godine, gorivo, k, d, m, g){
         brojMesta = brMesta;
         tip = t;
     }

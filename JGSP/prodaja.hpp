@@ -10,7 +10,7 @@ protected:
     vector <Usluge> prodateUsluge;
     int ukupnaProdaja;
 public:
-    Prodaja(int ukupno){
+    Prodaja(int ukupno = 0){
         ukupnaProdaja = ukupno;
     }
 

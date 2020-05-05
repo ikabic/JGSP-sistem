@@ -7,7 +7,7 @@ class Vozac:public Zaposleni{
 protected:
     VozackaDozvola kategorijaVozacke;
 public:
-    Vozac(VozackaDozvola doz, string imePrez, int jmbg, int godStaz, Polovi p, string adres, string mestoStan, double plat, int d, int m, int g)
+    Vozac(VozackaDozvola doz = B, string imePrez = "", int jmbg = 0, int godStaz = 0, Polovi p = muski, string adres = "", string mestoStan = "", double plat = 0, int d = 1, int m = 1, int g = 2000)
     :Zaposleni(imePrez, jmbg, godStaz, p, adres, mestoStan, plat, d, m, g){
         kategorijaVozacke = doz;
     }

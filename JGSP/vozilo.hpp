@@ -12,7 +12,7 @@ protected:
     int starost;
     Gorivo gorivoVozila;
 public:
-    Vozilo(string mark, string registr, int godine, TipGoriva gorivo, int k, int d, int m, int g):datumRegistracije(d,m,g), gorivoVozila(gorivo, k){
+    Vozilo(string mark = "", string registr = "", int godine = 0, TipGoriva gorivo = dizel, int k = 0, int d = 1, int m = 1, int g = 2000):datumRegistracije(d,m,g), gorivoVozila(gorivo, k){
         marka = mark;
         registracija = registr;
         starost = godine;

@@ -5,7 +5,7 @@ class Datum{
 protected:
     int dan, mesec, godina;
 public:
-    Datum(int d, int m, int g){
+    Datum(int d = 1, int m = 1, int g = 2000){
         dan = d;
         mesec = m;
         godina = g;

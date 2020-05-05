@@ -31,21 +31,21 @@ void readFile(string fileName){
 int main()
 {
     /// funkcionalnost: omogucavanje zaposlenom nakon logovanja da prodaje ili nabavlja resurse, ako je nadlezni
-    Autobus a();
-    Datum d();
-    Ekonomija e();
-    Gorivo g();
-    Kamion k();
-    Karte ka();
-    Nabavka n();
-    Nadlezni na();
-    Prodaja p();
-    Saobracaj s();
-    Skladiste sk();
-    Usluge u();
-    Vozac voz();
-    Vozilo v();
-    Zaposleni z();
+    Autobus a;
+    Datum d;
+    Ekonomija e;
+    Gorivo g;
+    Kamion k;
+    Karte ka;
+    Nabavka n;
+    Nadlezni na;
+    Prodaja p;
+    Saobracaj s;
+    Skladiste sk;
+    Usluge u;
+    Vozac voz;
+    Vozilo v;
+    Zaposleni z;
     readFile("zaposleni.txt");
     return 0;
 }

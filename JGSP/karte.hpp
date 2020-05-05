@@ -17,7 +17,7 @@ protected:
     int kolicina;
     double cena;
 public:
-    Karte(SveZone z, Korisnik tipK, Trajanje tipT, double c, int k, int d, int m, int g):datumProdaje(d,m,g){
+    Karte(SveZone z = I, Korisnik tipK = gradjanin, Trajanje tipT = jednokratno, double c = 0, int k = 0, int d = 1, int m = 1, int g = 2000):datumProdaje(d,m,g){
         zona = z;
         tipPoKorisniku = tipK;
         tipPoTrajanju = tipT;
