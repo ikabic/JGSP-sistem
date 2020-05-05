@@ -3,7 +3,7 @@
 
 #include "datum.hpp"
 
-enum SveNabavke{gorivo, delovi, kartaBus, kartaVoz};
+enum SveNabavke{gorivo, delovi, kartaBus};
 
 class Nabavka{
 protected:
@@ -11,11 +11,15 @@ protected:
     int kolicina;
     Datum datumNabavke;
     Datum rokTrajanja;
+    double cena;
 public:
-    Nabavka(SveNabavke n, int k, int d1, int m1, int g1, int d2, int m2, int g2):datumNabavke(d1,m1,g1),rokTrajanja(d2,m2,g2){
+    Nabavka(SveNabavke n, double c, int k, int d1, int m1, int g1, int d2, int m2, int g2):datumNabavke(d1,m1,g1),rokTrajanja(d2,m2,g2){
         tip = n;
         kolicina = k;
+        cena = c;
     }
+
+    int getKolicina(){return kolicina;}
 };
 
 #endif // NABAVKA_HPP_INCLUDED

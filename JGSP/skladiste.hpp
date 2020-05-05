@@ -5,14 +5,15 @@ class Skladiste{
 protected:
     int rezervniDelovi;
     int karteAutobus;
-    int karteVoz;
     static int slobodanProstor; /// koliko proizvoda moze stati u skladiste
 public:
-    Skladiste(int delovi = 0, int karteA = 0, int karteV = 0){
+    Skladiste(int delovi = 0, int karteA = 0){
         rezervniDelovi = delovi;
         karteAutobus = karteA;
-        karteVoz = karteV;
     }
+
+    int getKarte(){return karteAutobus;}
+    void setKarte(int karte){karteAutobus = karte;}
 };
 
 #endif // SKLADISTE_HPP_INCLUDED

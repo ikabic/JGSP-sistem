@@ -13,6 +13,8 @@ public:
     Prodaja(int ukupno){
         ukupnaProdaja = ukupno;
     }
+
+    void setKarte(Karte &k){prodateKarte.push_back(k);}
 };
 
 #endif // PRODAJA_HPP_INCLUDED

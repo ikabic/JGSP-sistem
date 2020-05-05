@@ -48,6 +48,7 @@
 		<Unit filename="vozac.hpp" />
 		<Unit filename="vozilo.hpp" />
 		<Unit filename="zaposleni.hpp" />
+		<Unit filename="zaposleni.txt" />
 		<Extensions>
 			<code_completion />
 			<envvars />

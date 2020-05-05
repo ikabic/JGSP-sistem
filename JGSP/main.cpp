@@ -14,11 +14,11 @@ using namespace std;
 #include "vozac.hpp"
 #include "nadlezni.hpp"
 
-int Skladiste::slobodanProstor = 100;
+int Skladiste::slobodanProstor = 10000;
 int Ekonomija::ukupnaZarada = 0;
 int Ekonomija::ukupnaPotrosnja = 0;
 
-void citajFile(string fileName){
+void readFile(string fileName){
     string line;
     ifstream myFile(fileName);
     if (myFile.is_open()){
@@ -30,5 +30,7 @@ void citajFile(string fileName){
 
 int main()
 {
+    /// funkcionalnost: omogucavanje zaposlenom nakon logovanja da prodaje ili nabavlja resurse, ako je nadlezni
+    readFile("zaposleni.txt");
     return 0;
 }
