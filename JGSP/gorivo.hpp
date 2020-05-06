@@ -12,6 +12,13 @@ public:
         kolicina = k;
         tip = t;
     }
+
+    friend ostream& operator<<(ostream& output, const Gorivo &g);
 };
+
+ostream& operator<<(ostream& output, const Gorivo &g){
+    output << "Tip goriva: " << g.tip << endl << "Kolicina goriva: " << g.kolicina <<endl;
+    return output;
+}
 
 #endif // GORIVO_HPP_INCLUDED

@@ -17,6 +17,14 @@ public:
         registracija = registr;
         starost = godine;
     }
+
+    friend ostream& operator<<(ostream& output, const Vozilo &v);
 };
+
+ostream& operator<<(ostream& output, const Vozilo &v){
+    output << "Vozilo - ispis" << endl << "Marka vozila: " << v.marka <<endl << "Datum registracije: ";
+    cout << v.datumRegistracije << v.gorivoVozila;
+    return output;
+}
 
 #endif // VOZILO_HPP_INCLUDED

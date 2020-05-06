@@ -25,6 +25,16 @@ public:
         mestoStanovanja = mestoStan;
         plata = plat;
     }
+
+    friend ostream& operator<<(ostream& output, const Zaposleni &z);
 };
+
+ostream& operator<<(ostream& output, const Zaposleni &z){
+    output << "Zaposleni - ispis" << endl << "Ime i prezime: " << z.imePrezime<<endl << "Datum rodjenja: ";
+    cout << z.datumRodjenja;
+    output << "JMBG: " << z.JMBG << endl << "Godine staza: " << z.godineStaza << endl << "Pol: " << z.pol << endl;
+    output << "Adresa stanovanja: " << z.adresa << endl << "Mesto stanovanja: " << z.mestoStanovanja << endl << "Plata: " << z.plata << endl << endl;
+    return output;
+}
 
 #endif // ZAPOSLENI_HPP_INCLUDED

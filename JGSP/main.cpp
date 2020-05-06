@@ -47,5 +47,7 @@ int main()
     Vozilo v;
     Zaposleni z;
     readFile("zaposleni.txt");
+    cout << z;
+    cout << v;
     return 0;
 }

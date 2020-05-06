@@ -54,7 +54,7 @@
 1588620038 c:\users\ivona\desktop\jgsp\zaposleni.hpp
 	"datum.hpp"
 
-1588682185 source:c:\users\ivona\documents\github\jgsp-sistem\jgsp\main.cpp
+1588786439 source:c:\users\ivona\documents\github\jgsp-sistem\jgsp\main.cpp
 	<iostream>
 	<vector>
 	<fstream>
@@ -68,16 +68,16 @@
 	"vozac.hpp"
 	"nadlezni.hpp"
 
-1588618786 c:\users\ivona\documents\github\jgsp-sistem\jgsp\autobus.hpp
+1588700612 c:\users\ivona\documents\github\jgsp-sistem\jgsp\autobus.hpp
 	"vozilo.hpp"
 
-1588620948 c:\users\ivona\documents\github\jgsp-sistem\jgsp\vozilo.hpp
+1588700584 c:\users\ivona\documents\github\jgsp-sistem\jgsp\vozilo.hpp
 	"gorivo.hpp"
 	"datum.hpp"
 
-1588620926 c:\users\ivona\documents\github\jgsp-sistem\jgsp\gorivo.hpp
+1588700390 c:\users\ivona\documents\github\jgsp-sistem\jgsp\gorivo.hpp
 
-1588615323 c:\users\ivona\documents\github\jgsp-sistem\jgsp\datum.hpp
+1588786191 c:\users\ivona\documents\github\jgsp-sistem\jgsp\datum.hpp
 
 1588682129 c:\users\ivona\documents\github\jgsp-sistem\jgsp\ekonomija.hpp
 	"prodaja.hpp"
@@ -85,31 +85,31 @@
 	"skladiste.hpp"
 	"karte.hpp"
 
-1588679992 c:\users\ivona\documents\github\jgsp-sistem\jgsp\prodaja.hpp
+1588700390 c:\users\ivona\documents\github\jgsp-sistem\jgsp\prodaja.hpp
 	"karte.hpp"
 	"usluge.hpp"
 
-1588680353 c:\users\ivona\documents\github\jgsp-sistem\jgsp\karte.hpp
+1588700390 c:\users\ivona\documents\github\jgsp-sistem\jgsp\karte.hpp
 	"datum.hpp"
 	"skladiste.hpp"
 
-1588680286 c:\users\ivona\documents\github\jgsp-sistem\jgsp\usluge.hpp
+1588700584 c:\users\ivona\documents\github\jgsp-sistem\jgsp\usluge.hpp
 	"datum.hpp"
 
-1588681849 c:\users\ivona\documents\github\jgsp-sistem\jgsp\nabavka.hpp
+1588700390 c:\users\ivona\documents\github\jgsp-sistem\jgsp\nabavka.hpp
 	"datum.hpp"
 
-1588621202 c:\users\ivona\documents\github\jgsp-sistem\jgsp\kamion.hpp
+1588700390 c:\users\ivona\documents\github\jgsp-sistem\jgsp\kamion.hpp
 
 1588680594 c:\users\ivona\documents\github\jgsp-sistem\jgsp\skladiste.hpp
 
-1588619039 c:\users\ivona\documents\github\jgsp-sistem\jgsp\saobracaj.hpp
+1588700598 c:\users\ivona\documents\github\jgsp-sistem\jgsp\saobracaj.hpp
 	"autobus.hpp"
 
-1588620038 c:\users\ivona\documents\github\jgsp-sistem\jgsp\zaposleni.hpp
+1588786474 c:\users\ivona\documents\github\jgsp-sistem\jgsp\zaposleni.hpp
 	"datum.hpp"
 
-1588620737 c:\users\ivona\documents\github\jgsp-sistem\jgsp\vozac.hpp
+1588700584 c:\users\ivona\documents\github\jgsp-sistem\jgsp\vozac.hpp
 
-1588621091 c:\users\ivona\documents\github\jgsp-sistem\jgsp\nadlezni.hpp
+1588700584 c:\users\ivona\documents\github\jgsp-sistem\jgsp\nadlezni.hpp
 
