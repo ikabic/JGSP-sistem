@@ -23,7 +23,7 @@ public:
 
 ostream& operator<<(ostream& output, const Vozilo &v){
     output << "Vozilo - ispis" << endl << "Marka vozila: " << v.marka <<endl << "Datum registracije: ";
-    cout << v.datumRegistracije << v.gorivoVozila;
+    output << v.datumRegistracije << v.gorivoVozila;
     return output;
 }
 
