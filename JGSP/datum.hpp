@@ -11,6 +11,10 @@ public:
         godina = g;
     }
 
+    void setDan(int d){dan = d;}
+    void setMesec(int m){mesec = m;}
+    void setGodina(int g){godina = g;}
+
     friend ostream& operator<<(ostream& output, const Datum &d);
 };
 

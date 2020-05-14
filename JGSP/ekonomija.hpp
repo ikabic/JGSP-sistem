@@ -8,8 +8,8 @@
 
 class Ekonomija{
 protected:
-    static int ukupnaZarada;
     static int ukupnaPotrosnja;
+    static int ukupnaZarada;
     Prodaja mesecnaProdaja;
     vector <Nabavka> mesecnaNabavka;
 public:

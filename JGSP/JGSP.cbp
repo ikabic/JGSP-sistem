@@ -33,6 +33,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="autobus.hpp" />
+		<Unit filename="bazaPodatakaZaposlenih.hpp" />
 		<Unit filename="datum.hpp" />
 		<Unit filename="ekonomija.hpp" />
 		<Unit filename="gorivo.hpp" />
@@ -41,11 +42,13 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="nabavka.hpp" />
 		<Unit filename="nadlezni.hpp" />
+		<Unit filename="nadlezni.txt" />
 		<Unit filename="prodaja.hpp" />
 		<Unit filename="saobracaj.hpp" />
 		<Unit filename="skladiste.hpp" />
 		<Unit filename="usluge.hpp" />
 		<Unit filename="vozac.hpp" />
+		<Unit filename="vozaci.txt" />
 		<Unit filename="vozilo.hpp" />
 		<Unit filename="zaposleni.hpp" />
 		<Unit filename="zaposleni.txt" />

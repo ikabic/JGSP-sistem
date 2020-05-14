@@ -20,6 +20,14 @@ public:
     }
 
     int getKolicina(){return kolicina;}
+    friend ostream& operator<<(ostream& output, const Nabavka &n);
 };
+
+/// napravi switch za tip
+ostream& operator<<(ostream& output, const Nabavka &n){
+    output << "Nabavka - ispis" << endl << "Tip resursa: " << n.tip << endl << "Kolicina: " << n.kolicina << endl << "Datum nabavke: " << n.datumNabavke;
+    output << "Rok trajanja: " << n.rokTrajanja << "Cena: " << n.cena << endl;
+    return output;
+}
 
 #endif // NABAVKA_HPP_INCLUDED
