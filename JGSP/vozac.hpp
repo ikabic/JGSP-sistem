@@ -15,6 +15,9 @@ public:
     string getIme(){return imePrezime;}
     double getPlata(){return plata;}
     int getGodineStaza(){return godineStaza;}
+    Polovi getPol(){return pol;}
+    string getMestoStanovanja(){return mestoStanovanja;}
+    VozackaDozvola getVozackaDozvola(){return kategorijaVozacke;}
 
     void ucitajPreset(string imeFajla, int l){
         Zaposleni::ucitajPreset(imeFajla, l);

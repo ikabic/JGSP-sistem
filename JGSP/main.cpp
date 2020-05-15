@@ -3,6 +3,7 @@
 #include <fstream>
 #include <windows.h>
 #include <math.h>
+#include <string>
 
 using namespace std;
 
@@ -12,42 +13,11 @@ using namespace std;
 #include "skladiste.hpp"
 #include "saobracaj.hpp"
 #include "vozilo.hpp"
-#include "bazaPodatakaZaposlenih.hpp"
+#include "funkcije.hpp"
 
 int Skladiste::slobodanProstor = 10000;
 int Ekonomija::ukupnaZarada = 0;
 int Ekonomija::ukupnaPotrosnja = 0;
-
-void textcolor(unsigned short color){
-    HANDLE hcon = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(hcon,color);
-}
-
-void readFile(string fileName){
-    string line;
-    ifstream myFile(fileName);
-    if (myFile.is_open()){
-        while (getline(myFile,line)) cout << line << endl;
-        myFile.close();
-    }
-    else cout << "Greska prilikom otvaranja fajla.";
-}
-
-int brojRadnika(string imeFajla){
-    int i = 0;
-    string line;
-    ifstream myFile(imeFajla);
-    if (myFile.is_open()){
-        while (getline(myFile,line)) i++;
-        myFile.close();
-    }
-    else cout << "Greska prilikom otvaranja fajla.";
-    return i;
-}
-
-void meni(){
-
-}
 
 int main()
 {
@@ -64,16 +34,38 @@ int main()
     Saobracaj s;
     Skladiste sk;
     Usluge u;
-    Vozac voz;
+    Vozac voz(C, "Katarina Katarinovic", "8536853685343", 2, zenski, "Narodnih heroja 9", "Sabac", 45000, 27, 6, 2000);
     Vozilo v;
     Zaposleni z("Marija Marinkovic", "010198835625", 2, zenski, "Brestovaca 9", "Beograd", 35000, 1, 1, 1988);
-    BazaPodatakaZaposlenih b;
-    z.printRezime();
+
+    textcolor(4); cout << "Ispis 2 rezimea:" << endl << endl; textcolor(7);
+    z.printRezime(); /// ispis virtuelne metode
     cout << endl;
-    na.printRezime();
+    na.printRezime(); /// ispis redefinisane virtuelne metode
     cout << endl << endl;
-    b.ucitajSve();
-    b.ispisiSve();
-    b.pretragaZaposlenih();
+
+    BazaPodatakaZaposlenih b;
+    b.ucitajSve(); /// ucitavanje vec upisanih zaposlenih iz fajla u vektor
+
+    textcolor(4); cout << "Ispis pre zaposljavanja:" << endl << endl; textcolor(7);
+    b.ispisiZaposlene(2);
+    b.dodajVozaca(voz); /// dodavanje u vektor
+    textcolor(4); cout << endl << "Ispis posle zaposljavanja:" << endl << endl; textcolor(7);
+    b.ispisiZaposlene(2);
+
+    /// isti sistem za obicne zaposlene i nadlezne^
+
+    textcolor(4); cout << "Ispis svih zaposlenih:" << endl << endl; textcolor(7);
+    b.ispisiZaposlene(4);
+
+    textcolor(4); cout << "Ispis pre otpustanja:" << endl << endl; textcolor(7);
+    b.ispisiZaposlene(2);
+    b.otpustiZaposlenog(2);
+    textcolor(4); cout << endl << "Ispis posle otpustanja:" << endl << endl; textcolor(7);
+    b.ispisiZaposlene(2);
+
+    /// isti sistem za obicne zaposlene i nadlezne^
+
+    b.pretragaZaposlenih(); /// pretraga zaposlenih u vektoru po razlicitim kriterijumima
     return 0;
 }

@@ -1,1 +1,2 @@
-Petar Petrovic|11|11|1996|1111996655432|0|muski|Dambora 1b|Jagodina|80000|1
+Petar Petrovic|11|11|1996|1111996655432|1|muski|Dambora 1b|Jagodina|80000|0
+Radivoje Radivojevic|3|5|1962|0305962384568|10|muski|Zlatne Grede 4|Novi Sad|92000|1

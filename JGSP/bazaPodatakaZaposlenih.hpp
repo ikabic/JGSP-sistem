@@ -6,6 +6,7 @@
 #include "nadlezni.hpp"
 
 int brojRadnika(string imeFajla);
+void textcolor(unsigned short color);
 
 class BazaPodatakaZaposlenih{
 protected:
@@ -13,9 +14,18 @@ protected:
     vector <Vozac> sviVozaci;
     vector <Zaposleni> sviZaposleni;
 public:
-    void dodajZaposlenog(Zaposleni z){sviZaposleni.push_back(z);}
-    void dodajNadleznog(Nadlezni n){sviNadlezni.push_back(n);}
-    void dodajVozaca(Vozac v){sviVozaci.push_back(v);}
+    void dodajZaposlenog(Zaposleni z){
+        sviZaposleni.push_back(z);
+        cout << z.getIme() << " je zaposljen/a." << endl;
+    }
+    void dodajNadleznog(Nadlezni n){
+        sviNadlezni.push_back(n);
+        cout << n.getIme() << " je zaposljen/a." << endl;
+    }
+    void dodajVozaca(Vozac v){
+        sviVozaci.push_back(v);
+        cout << v.getIme() << " je zaposljen/a." << endl;
+    }
 
     void ucitajZaposlene(){
         Zaposleni z;
@@ -53,38 +63,146 @@ public:
         ucitajZaposlene();
     }
 
-    void ispisiVozace(){for(auto o = sviVozaci.begin(); o != sviVozaci.end(); o++) cout << *o;}
-    void ispisiNadlezne(){for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) cout << *i;}
-    void ispisiZaposlene(){for(auto u = sviZaposleni.begin(); u != sviZaposleni.end(); u++) cout << *u;}
-    void ispisiSve(){
-        ispisiNadlezne();
-        ispisiVozace();
-        ispisiZaposlene();
+    void ispisiZaposlene(int x){
+        switch(x){
+            case 1:
+                for(auto u = sviZaposleni.begin(); u != sviZaposleni.end(); u++) cout << *u;
+                break;
+            case 2:
+                for(auto o = sviVozaci.begin(); o != sviVozaci.end(); o++) cout << *o;
+                break;
+            case 3:
+                for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) cout << *i;
+                break;
+            case 4:
+                for(auto o = sviVozaci.begin(); o != sviVozaci.end(); o++) cout << *o;
+                for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) cout << *i;
+                for(auto u = sviZaposleni.begin(); u != sviZaposleni.end(); u++) cout << *u;
+                break;
+        }
+    }
+
+    void otpustiZaposlenog(int x){
+        string line;
+        switch(x){
+            case 1:
+                fflush(stdin);
+                cout << "> ";
+                getline(cin, line);
+                for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++) if(i -> getIme() == line){
+                        sviZaposleni.erase(i);
+                        cout << line << " je otpusten/a." << endl;
+                        return;
+                }
+                cout << line << " nije otpusten/a." << endl;
+                break;
+            case 2:
+                fflush(stdin);
+                cout << "> ";
+                getline(cin, line);
+                for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getIme() == line){
+                        sviVozaci.erase(i);
+                        cout << line << " je otpusten/a." << endl;
+                        return;
+                }
+                cout << line << " nije otpusten/a." << endl;
+                break;
+            case 3:
+                fflush(stdin);
+                cout << "> ";
+                getline(cin, line);
+                for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getIme() == line){
+                        sviNadlezni.erase(i);
+                        cout << line << " je otpusten/a." << endl;
+                        return;
+                }
+                cout << line << " nije otpusten/a." << endl;
+                break;
+        }
     }
 
     void pretragaZaposlenih(){
-        int x,  y;
-        string line, line2, line3;
+        int x,  y, z;
+        string line;
         double p;
-        cout << "Pretraga po: 1. Imenu           2. Plati           3. Godinama staza" << endl << "> ";
+        textcolor(4);
+        cout << "Pretraga po: "; textcolor(7);
+        cout << "1. Imenu           2. Plati           3. Godinama staza           4. Polu"  << endl << "             5. Vozackoj dozvoli           6. Ovlascenje            7. Mestu stanovanja" << endl << "> ";
         cin >> x;
         switch(x){
             case 1:
-                cin >> line >> line2;
-                line = line + " " + line2;
-                for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++) if(i -> getIme() == line) cout << *i;
-                for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getIme() == line) cout << *i;
-                for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getIme() == line) cout << *i;
+                z = 0;
+                fflush(stdin);
+                getline(cin, line);
+                for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++) if(i -> getIme() == line){cout << *i; z++;}
+                for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getIme() == line){cout << *i; z++;}
+                for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getIme() == line){cout << *i; z++;}
+                if(z == 0){cout << "Nepostoji zaposleni sa takvim imenom.";}
+                break;
             case 2:
+                z = 0;
                 cin >> p;
-                for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++) if(i -> getPlata() == p) cout << *i;
-                for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getPlata() == p) cout << *i;
-                for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getPlata() == p) cout << *i;
+                for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++) if(i -> getPlata() == p){cout << *i; z++;}
+                for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getPlata() == p){cout << *i; z++;}
+                for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getPlata() == p){cout << *i; z++;}
+                if(z == 0){cout << "Nepostoji zaposleni sa takvom platom.";}
+                break;
             case 3:
+                z = 0;
                 cin >> y;
-                for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++) if(i -> getGodineStaza() == y) cout << *i;
-                for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getGodineStaza() == y) cout << *i;
-                for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getGodineStaza() == y) cout << *i;
+                for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++) if(i -> getGodineStaza() == y){cout << *i; z++;}
+                for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getGodineStaza() == y){cout << *i; z++;}
+                for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getGodineStaza() == y){cout << *i; z++;}
+                if(z == 0){cout << "Nepostoji zaposleni sa toliko godina staza.";}
+                break;
+            case 4:
+                z = 0;
+                cin >> line;
+                if(line == "muski") x = 0;
+                else if(line == "zenski") x = 1;
+                else{
+                        cout << "Nepostoji zaposleni tog pola.";
+                        break;
+                }
+                for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++) if(i -> getPol() == x){cout << *i; z++;}
+                for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getPol() == x){cout << *i; z++;}
+                for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getPol() == x){cout << *i; z++;}
+                if(z == 0){cout << "Nepostoji zaposleni sa toliko godina staza.";}
+                break;
+            case 5:
+                z = 0;
+                cin >> line;
+                if(line == "B") x = 0;
+                else if(line == "C") x = 1;
+                else if(line == "D") x = 2;
+                else{
+                    cout << "Nepostoji zaposleni sa takvom vozackom dozvolom.";
+                    break;
+                }
+                for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getVozackaDozvola() == x){cout << *i; z++;}
+                if(z == 0){cout << "Nepostoji zaposleni sa takvom vozackom dozvolom.";}
+                break;
+            case 6:
+                z = 0;
+                cin >> line;
+                if(line == "true" || line == "1") x = 1;
+                else if(line == "false" || line == "0") x = 0;
+                else{
+                        cout << "Nepostoji zaposleni tog ovlascenja.";
+                        break;
+                }
+                for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getOvlascenje() == x){cout << *i; z++;}
+                if(z == 0){cout << "Nepostoji zaposleni tog ovlascenja.";}
+                break;
+            case 7:
+                z = 0;
+                fflush(stdin);
+                getline(cin, line);
+                for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++) if(i -> getMestoStanovanja() == line){cout << *i; z++;}
+                for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getMestoStanovanja() == line){cout << *i; z++;}
+                for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getMestoStanovanja() == line){cout << *i; z++;}
+                if(z == 0){cout << "Nepostoji zaposleni sa tim mestom stanovanja.";}
+                break;
         }
     }
 };

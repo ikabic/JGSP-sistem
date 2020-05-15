@@ -13,6 +13,9 @@ public:
     string getIme(){return imePrezime;}
     double getPlata(){return plata;}
     int getGodineStaza(){return godineStaza;}
+    Polovi getPol(){return pol;}
+    string getMestoStanovanja(){return mestoStanovanja;}
+    bool getOvlascenje(){return ovlascenja;}
 
     void printRezime(){
         Zaposleni::printRezime();

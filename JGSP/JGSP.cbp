@@ -36,6 +36,7 @@
 		<Unit filename="bazaPodatakaZaposlenih.hpp" />
 		<Unit filename="datum.hpp" />
 		<Unit filename="ekonomija.hpp" />
+		<Unit filename="funkcije.hpp" />
 		<Unit filename="gorivo.hpp" />
 		<Unit filename="kamion.hpp" />
 		<Unit filename="karte.hpp" />
