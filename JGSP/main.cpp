@@ -44,6 +44,8 @@ int main()
     na.printRezime(); /// ispis redefinisane virtuelne metode
     cout << endl << endl;
 
+    /// drugi primer virtualnosti je u zaposleni.hpp i klasama koje nasledjuju klasu Zaposleni kod rada s fajlovima, ali to bas ne mogu da prikazem u mainu
+
     BazaPodatakaZaposlenih b;
     b.ucitajSve(); /// ucitavanje vec upisanih zaposlenih iz fajla u vektor
 
