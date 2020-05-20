@@ -27,13 +27,13 @@ public:
         plata = plat;
     }
 
-    string getIme(){return imePrezime;}
-    double getPlata(){return plata;}
-    int getGodineStaza(){return godineStaza;}
-    Polovi getPol(){return pol;}
-    string getMestoStanovanja(){return mestoStanovanja;}
+    string getIme() const{return imePrezime;}
+    double getPlata() const{return plata;}
+    int getGodineStaza() const{return godineStaza;}
+    Polovi getPol() const{return pol;}
+    string getMestoStanovanja() const{return mestoStanovanja;}
 
-    virtual void printRezime(){
+    virtual void printRezime() const{
         cout << "Rezime - " << imePrezime << endl;
         if(pol == muski) cout << "Rodjen " << datumRodjenja;
         else cout << "Rodjena " << datumRodjenja;

@@ -13,7 +13,7 @@ protected:
     Prodaja mesecnaProdaja;
     vector <Nabavka> mesecnaNabavka;
 public:
-    void nabavkaKarti(Skladiste &s, Nabavka &n){
+    void nabavkaKarti(Skladiste &s, const Nabavka &n){
         mesecnaNabavka.push_back(n);
         ukupnaPotrosnja -= n.getKolicina();
         s.setKarte(s.getKarte() + n.getKolicina());

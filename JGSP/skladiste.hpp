@@ -12,7 +12,7 @@ public:
         karteAutobus = karteA;
     }
 
-    int getKarte(){return karteAutobus;}
+    int getKarte() const{return karteAutobus;}
     void setKarte(int karte){karteAutobus = karte;}
 };
 

@@ -54,7 +54,7 @@
 1588620038 c:\users\ivona\desktop\jgsp\zaposleni.hpp
 	"datum.hpp"
 
-1589584659 source:c:\users\ivona\documents\github\jgsp-sistem\jgsp\main.cpp
+1589977888 source:c:\users\ivona\documents\github\jgsp-sistem\jgsp\main.cpp
 	<iostream>
 	<vector>
 	<fstream>
@@ -80,7 +80,7 @@
 
 1589488116 c:\users\ivona\documents\github\jgsp-sistem\jgsp\datum.hpp
 
-1588940010 c:\users\ivona\documents\github\jgsp-sistem\jgsp\ekonomija.hpp
+1589982085 c:\users\ivona\documents\github\jgsp-sistem\jgsp\ekonomija.hpp
 	"prodaja.hpp"
 	"nabavka.hpp"
 	"skladiste.hpp"
@@ -90,36 +90,36 @@
 	"karte.hpp"
 	"usluge.hpp"
 
-1588700390 c:\users\ivona\documents\github\jgsp-sistem\jgsp\karte.hpp
+1589978805 c:\users\ivona\documents\github\jgsp-sistem\jgsp\karte.hpp
 	"datum.hpp"
 	"skladiste.hpp"
 
 1588700584 c:\users\ivona\documents\github\jgsp-sistem\jgsp\usluge.hpp
 	"datum.hpp"
 
-1589480493 c:\users\ivona\documents\github\jgsp-sistem\jgsp\nabavka.hpp
+1589978805 c:\users\ivona\documents\github\jgsp-sistem\jgsp\nabavka.hpp
 	"datum.hpp"
 
 1588700390 c:\users\ivona\documents\github\jgsp-sistem\jgsp\kamion.hpp
 
-1588680594 c:\users\ivona\documents\github\jgsp-sistem\jgsp\skladiste.hpp
+1589978839 c:\users\ivona\documents\github\jgsp-sistem\jgsp\skladiste.hpp
 
 1588700598 c:\users\ivona\documents\github\jgsp-sistem\jgsp\saobracaj.hpp
 	"autobus.hpp"
 
-1589581625 c:\users\ivona\documents\github\jgsp-sistem\jgsp\zaposleni.hpp
+1589978805 c:\users\ivona\documents\github\jgsp-sistem\jgsp\zaposleni.hpp
 	"datum.hpp"
 	"bazaPodatakaZaposlenih.hpp"
 
-1589551597 c:\users\ivona\documents\github\jgsp-sistem\jgsp\vozac.hpp
+1589978805 c:\users\ivona\documents\github\jgsp-sistem\jgsp\vozac.hpp
 
-1589551597 c:\users\ivona\documents\github\jgsp-sistem\jgsp\nadlezni.hpp
+1589978805 c:\users\ivona\documents\github\jgsp-sistem\jgsp\nadlezni.hpp
 
-1589584889 c:\users\ivona\documents\github\jgsp-sistem\jgsp\bazapodatakazaposlenih.hpp
+1589982023 c:\users\ivona\documents\github\jgsp-sistem\jgsp\bazapodatakazaposlenih.hpp
 	"zaposleni.hpp"
 	"vozac.hpp"
 	"nadlezni.hpp"
 
-1589582699 c:\users\ivona\documents\github\jgsp-sistem\jgsp\funkcije.hpp
+1589982158 c:\users\ivona\documents\github\jgsp-sistem\jgsp\funkcije.hpp
 	"bazaPodatakaZaposlenih.hpp"
 

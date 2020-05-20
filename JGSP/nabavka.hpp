@@ -19,7 +19,7 @@ public:
         cena = c;
     }
 
-    int getKolicina(){return kolicina;}
+    int getKolicina() const{return kolicina;}
     friend ostream& operator<<(ostream& output, const Nabavka &n);
 };
 

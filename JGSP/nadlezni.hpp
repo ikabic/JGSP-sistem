@@ -10,14 +10,14 @@ public:
         ovlascenja = ovlas;
     }
 
-    string getIme(){return imePrezime;}
-    double getPlata(){return plata;}
-    int getGodineStaza(){return godineStaza;}
-    Polovi getPol(){return pol;}
-    string getMestoStanovanja(){return mestoStanovanja;}
-    bool getOvlascenje(){return ovlascenja;}
+    string getIme() const{return imePrezime;}
+    double getPlata() const{return plata;}
+    int getGodineStaza() const{return godineStaza;}
+    Polovi getPol() const{return pol;}
+    string getMestoStanovanja() const{return mestoStanovanja;}
+    bool getOvlascenje() const{return ovlascenja;}
 
-    void printRezime(){
+    void printRezime() const{
         Zaposleni::printRezime();
         if (ovlascenja == true) cout << "Nadlezni koji ima ovlascenja za rukovodstvo bazom podataka."; return;
         cout << "Nadlezni koji nema ovlascenja za rukovodstvo bazom podataka.";

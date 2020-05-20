@@ -36,12 +36,14 @@ int main()
     Usluge u;
     Vozac voz(C, "Katarina Katarinovic", "8536853685343", 2, zenski, "Narodnih heroja 9", "Sabac", 45000, 27, 6, 2000);
     Vozilo v;
-    Zaposleni z("Marija Marinkovic", "010198835625", 2, zenski, "Brestovaca 9", "Beograd", 35000, 1, 1, 1988);
+    Zaposleni za("Marija Marinkovic", "010198835625", 2, zenski, "Brestovaca 9", "Beograd", 35000, 1, 1, 1988);
 
+    Zaposleni* z = &za;
     textcolor(4); cout << "Ispis 2 rezimea:" << endl << endl; textcolor(7);
-    z.printRezime(); /// ispis virtuelne metode
+    z -> printRezime(); /// ispis virtuelne metode
     cout << endl;
-    na.printRezime(); /// ispis redefinisane virtuelne metode
+    z = &na;
+    z -> printRezime(); /// ispis redefinisane virtuelne metode
     cout << endl << endl;
 
     /// drugi primer virtualnosti je u zaposleni.hpp i klasama koje nasledjuju klasu Zaposleni kod rada s fajlovima, ali to bas ne mogu da prikazem u mainu

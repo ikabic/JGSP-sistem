@@ -14,15 +14,15 @@ protected:
     vector <Vozac> sviVozaci;
     vector <Zaposleni> sviZaposleni;
 public:
-    void dodajZaposlenog(Zaposleni z){
+    void dodajZaposlenog(const Zaposleni &z){
         sviZaposleni.push_back(z);
         cout << z.getIme() << " je zaposljen/a." << endl;
     }
-    void dodajNadleznog(Nadlezni n){
+    void dodajNadleznog(const Nadlezni &n){
         sviNadlezni.push_back(n);
         cout << n.getIme() << " je zaposljen/a." << endl;
     }
-    void dodajVozaca(Vozac v){
+    void dodajVozaca(const Vozac &v){
         sviVozaci.push_back(v);
         cout << v.getIme() << " je zaposljen/a." << endl;
     }
@@ -63,7 +63,7 @@ public:
         ucitajZaposlene();
     }
 
-    void ispisiZaposlene(int x){
+    void ispisiZaposlene(int x) const{
         switch(x){
             case 1:
                 for(auto u = sviZaposleni.begin(); u != sviZaposleni.end(); u++) cout << *u;
@@ -121,8 +121,8 @@ public:
         }
     }
 
-    void pretragaZaposlenih(){
-        int x,  y, z;
+    void pretragaZaposlenih() const{
+        int x, y, z;
         string line;
         double p;
         textcolor(4);

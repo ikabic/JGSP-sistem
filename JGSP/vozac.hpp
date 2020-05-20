@@ -12,12 +12,12 @@ public:
         kategorijaVozacke = doz;
     }
 
-    string getIme(){return imePrezime;}
-    double getPlata(){return plata;}
-    int getGodineStaza(){return godineStaza;}
-    Polovi getPol(){return pol;}
-    string getMestoStanovanja(){return mestoStanovanja;}
-    VozackaDozvola getVozackaDozvola(){return kategorijaVozacke;}
+    string getIme() const{return imePrezime;}
+    double getPlata() const{return plata;}
+    int getGodineStaza() const{return godineStaza;}
+    Polovi getPol() const{return pol;}
+    string getMestoStanovanja() const{return mestoStanovanja;}
+    VozackaDozvola getVozackaDozvola() const{return kategorijaVozacke;}
 
     void ucitajPreset(string imeFajla, int l){
         Zaposleni::ucitajPreset(imeFajla, l);

@@ -25,8 +25,8 @@ public:
         cena = c;
     }
 
-    int getKolicina(){return kolicina;}
-    double getCena(){return cena;}
+    int getKolicina() const{return kolicina;}
+    double getCena() const{return cena;}
 };
 
 #endif // KARTE_HPP_INCLUDED
