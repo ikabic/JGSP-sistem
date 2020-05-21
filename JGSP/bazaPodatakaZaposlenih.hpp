@@ -64,7 +64,19 @@ public:
     }
 
     void ispisiZaposlene(int x) const{
-        switch(x){
+        if(x == 0){
+            cout << endl << endl;
+            textcolor(8); cout << "Obicni zaposleni:" << endl; textcolor(7);
+            for(auto u = sviZaposleni.begin(); u != sviZaposleni.end(); u++) cout << "   " << u -> getIme() << endl;
+            textcolor(8); cout << endl << "Vozaci:" << endl; textcolor(7);
+            for(auto o = sviVozaci.begin(); o != sviVozaci.end(); o++) cout << "   " << o -> getIme() << endl;
+            textcolor(8); cout << endl << "Nadlezni:" << endl; textcolor(7);
+            for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) cout << "   " << i -> getIme() << endl;
+            cout << endl;
+        }
+
+        else{
+            switch(x){
             case 1:
                 for(auto u = sviZaposleni.begin(); u != sviZaposleni.end(); u++) cout << *u;
                 break;
@@ -79,6 +91,7 @@ public:
                 for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) cout << *i;
                 for(auto u = sviZaposleni.begin(); u != sviZaposleni.end(); u++) cout << *u;
                 break;
+            }
         }
     }
 
@@ -119,6 +132,14 @@ public:
                 cout << line << " nije otpusten/a." << endl;
                 break;
         }
+    }
+
+    void pretragaRezime(string line) const{
+        int z = 0;
+        for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++) if(i -> getIme() == line){i -> printRezime(); z++;}
+        for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getIme() == line){i -> printRezime(); z++;}
+        for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getIme() == line){i -> printRezime(); z++;}
+        if(z == 0){textcolor(8); cout << "Nepostoji zaposleni sa takvim imenom." << endl; textcolor(7);}
     }
 
     void pretragaZaposlenih() const{

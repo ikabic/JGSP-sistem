@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <math.h>
 #include <string>
+#include <conio.h>
 
 using namespace std;
 
@@ -21,7 +22,7 @@ int Ekonomija::ukupnaPotrosnja = 0;
 
 int main()
 {
-    /// funkcionalnost: omogucavanje zaposlenom nakon logovanja da prodaje ili nabavlja resurse, ako je nadlezni
+   /* /// funkcionalnost: omogucavanje zaposlenom nakon logovanja da prodaje ili nabavlja resurse, ako je nadlezni
     Autobus a;
     Datum d;
     Ekonomija e;
@@ -70,6 +71,12 @@ int main()
 
     /// isti sistem za obicne zaposlene i nadlezne^
 
-    b.pretragaZaposlenih(); /// pretraga zaposlenih u vektoru po razlicitim kriterijumima
+    b.pretragaZaposlenih(); /// pretraga zaposlenih u vektoru po razlicitim kriterijumima*/
+
+    BazaPodatakaZaposlenih b;
+    b.ucitajSve();
+    meni(b, 3);
+    start(b);
+
     return 0;
 }
