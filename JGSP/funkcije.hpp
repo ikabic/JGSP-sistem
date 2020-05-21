@@ -30,18 +30,21 @@ void readFile(string fileName){
     else cout << "Greska prilikom otvaranja fajla.";
 }
 
-void meni(BazaPodatakaZaposlenih &b, int a){
+void meni(BazaPodatakaZaposlenih &b, Zaposleni* z, int a){
     int x, i = 1;
     string line;
     cout << "JGSP - pocetna stranica" << endl;
     textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
-    cout << "Dobrodosli, ovo su trenutno dostupne funkcije naseg sajita:" << endl << endl;
+    cout << "Dobrodosli, ovo su Vama trenutno dostupne funkcije naseg sajita:" << endl << endl;
     textcolor(8); cout << i << ". "; textcolor(7); i++;
     cout << "Lista svih zaposlenih" << endl;
     textcolor(8); cout << i << ". "; textcolor(7); i++;
     cout << "Pregled rezimea" << endl;
-    textcolor(8); cout << i << ". "; textcolor(7); i++;
-    cout << "Prodaja dobara" << endl;
+
+    if(a == 1){
+        textcolor(8); cout << i << ". "; textcolor(7); i++;
+        cout << "Prodaja dobara" << endl;
+    }
 
     if(a == 2 || a == 3){
         textcolor(8); cout << i << ". "; textcolor(7); i++;
@@ -64,7 +67,7 @@ void meni(BazaPodatakaZaposlenih &b, int a){
     textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
     textcolor(8); cout << "> "; textcolor(7);
     cin >> x;
-    system("cls");
+    if(x > 0 && x < 9) system("cls");
 
     switch(x){
     case 0:
@@ -77,18 +80,24 @@ void meni(BazaPodatakaZaposlenih &b, int a){
     case 2:
         cout << "JGSP - pregled rezimea" << endl;
         textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
-        if(a == 1){}
+        if(a == 1 || a == 0){
+                cout << endl << endl;
+                b.pretragaRezime(z -> getIme());
+                cout << endl << endl;
+        }
         else{
                 cout << "Unesite ime zaposlenog ciji rezime zelite da pregledate:" << endl;
                 textcolor(8); cout << "> "; textcolor(7);
                 fflush(stdin);
                 getline(cin, line);
                 cout << endl;
-                //b.pretragaRezime(line);
-                cout << endl;
+                b.pretragaRezime(line);
+                cout << endl << endl;
         }
         break;
     case 3:
+        cout << "JGSP - pregled rezimea" << endl;
+        textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
         break;
     case 4:
         break;
@@ -102,17 +111,21 @@ void meni(BazaPodatakaZaposlenih &b, int a){
         break;
     default:
         cout << endl;
-        textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite broj u intervalu [1,8] !!!"; textcolor(7);
-        Sleep(2000);
-        system("cls");
-        meni(b, a);
-    }
-    if(x > 0 && x < 9){
-        cout << "Pritisnite bilo koje dugme za povratak na pocetni meni" << endl;
+        textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od ponudjenih brojeva !!!"; textcolor(7);
+        cout << endl << endl << "Pritisnite bilo koje dugme za povratak na pocetni meni." << endl;
         textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
         while(!kbhit()){}
+        getch();
         system("cls");
-        meni(b, a);
+        meni(b, z, a);
+    }
+    if(x > 0 && x < 9){
+        cout << "Pritisnite bilo koje dugme za povratak na pocetni meni." << endl;
+        textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+        while(!kbhit()){}
+        getch();
+        system("cls");
+        meni(b, z, a);
     }
 
 
@@ -120,11 +133,75 @@ void meni(BazaPodatakaZaposlenih &b, int a){
 
 void start(BazaPodatakaZaposlenih &b){
     string line;
+    int x;
+    bool a;
+    Nadlezni n;
+    Zaposleni z;
+    Vozac v;
     cout << "JGSP - stranica za prijavu" << endl;
     textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
-    cout << endl << endl << endl;
+    cout << "Da li se prijavljujete kao zaposleni ili kao nadlezni?" << endl << endl;
+    textcolor(8); cout << "1. "; textcolor(7);
+    cout << "Nadlezni" << endl;
+    textcolor(8); cout << "2. "; textcolor(7);
+    cout << "Obican zaposleni" << endl;
+    textcolor(8); cout << "3. "; textcolor(7);
+    cout << "Vozac" << endl;
+    cout << endl << "Ukucajte broj od zeljene opcije." << endl;
+    textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+    textcolor(8); cout << "> "; textcolor(7);
+    cin >> x;
 
-
+    if(x > 0 && x < 4){
+        system("cls");
+        cout << "JGSP - stranica za prijavu" << endl;
+        textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+        cout << "Unesite Vase puno ime i prezime." << endl;
+        textcolor(8); cout << "> "; textcolor(7);
+        fflush(stdin);
+        getline(cin, line);
+    }
+    switch(x){
+    case 1:
+            n = b.pronadjiNadleznog(line, &a);
+            break;
+    case 2:
+            z = b.pronadjiZaposlenog(line, &a);
+            break;
+    case 3:
+            v = b.pronadjiVozaca(line, &a);
+            break;
+    default:
+            cout << endl;
+            textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od ponudjenih brojeva !!!" << endl; textcolor(7);
+            cout << endl << "Pritisnite bilo koje dugme za povratak na pocetni meni." << endl;
+            textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+            while(!kbhit()){}
+            getch();
+            system("cls");
+            start(b);
+    }
+    if(a == true){
+            textcolor(10); cout << "Pristup odobren." << endl; textcolor(7);
+            cout << endl << "Pritisnite bilo koje dugme za nastavak." << endl;
+            textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+            while(!kbhit()){}
+            getch();
+            system("cls");
+            if(x == 1 && n.getOvlascenje() == true) meni(b, &n, 3);
+            else if(x == 1 && n.getOvlascenje() == false) meni(b, &n, 2);
+            else if(x == 2) meni(b, &z, 1);
+            else if(x == 3) meni(b, &v, 0);
+    }
+    else{
+            textcolor(4); cout << "Pristup odbijen."; textcolor(7);
+            cout << endl << endl << "Pritisnite bilo koje dugme za povratak na pocetni meni." << endl;
+            textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+            while(!kbhit()){}
+            getch();
+            system("cls");
+            start(b);
+    }
 }
 
 #endif // FUNKCIJE_HPP_INCLUDED

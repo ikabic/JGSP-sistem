@@ -1,7 +1,7 @@
 #ifndef VOZAC_HPP_INCLUDED
 #define VOZAC_HPP_INCLUDED
 
-enum VozackaDozvola{B,C,D};
+enum VozackaDozvola{B = 0,C,D};
 
 class Vozac:public Zaposleni{
 protected:
@@ -12,12 +12,31 @@ public:
         kategorijaVozacke = doz;
     }
 
+    Vozac(const Vozac &v){
+        imePrezime = v.imePrezime;
+        datumRodjenja = v.datumRodjenja;
+        JMBG = v.JMBG;
+        godineStaza = v.godineStaza;
+        pol = v.pol;
+        adresa = v.adresa;
+        mestoStanovanja = v.mestoStanovanja;
+        plata = v.plata;
+        kategorijaVozacke = v.kategorijaVozacke;
+    }
+
     string getIme() const{return imePrezime;}
     double getPlata() const{return plata;}
     int getGodineStaza() const{return godineStaza;}
     Polovi getPol() const{return pol;}
     string getMestoStanovanja() const{return mestoStanovanja;}
     VozackaDozvola getVozackaDozvola() const{return kategorijaVozacke;}
+
+    void printRezime() const{
+        Zaposleni::printRezime();
+        if (kategorijaVozacke == 0){cout << "Vozac s vozackom dozvolom kategorije B."; return;}
+        else if (kategorijaVozacke == 1){cout << "Vozac s vozackom dozvolom kategorije C."; return;}
+        else cout << "Vozac s vozackom dozvolom kategorije D.";
+    }
 
     void ucitajPreset(string imeFajla, int l){
         Zaposleni::ucitajPreset(imeFajla, l);
@@ -33,7 +52,7 @@ public:
             }
             line2 = line[u];
             if(line2 == "B") kategorijaVozacke = B;
-            if(line2 == "C") kategorijaVozacke = C;
+            else if(line2 == "C") kategorijaVozacke = C;
             else kategorijaVozacke = D;
         }
         myFile.close();
@@ -49,9 +68,15 @@ ostream& operator<<(ostream& output, const Vozac &v){
     if(v.pol == muski) output << "muski" << endl;
     else output << "zenski" << endl;
     output << "Adresa stanovanja: " << v.adresa << endl << "Mesto stanovanja: " << v.mestoStanovanja << endl << "Plata: " << v.plata << endl<< "Kategorija vozacke dozvole: ";
-    if(v.kategorijaVozacke == B) output << "B" << endl << endl;
-    if(v.kategorijaVozacke == C) output << "C" << endl << endl;
-    else output << "D" << endl << endl;
+    if(v.kategorijaVozacke == B){
+            output << "B" << endl << endl;
+            return output;
+    }
+    if(v.kategorijaVozacke == C){
+            output << "C" << endl << endl;
+            return output;
+    }
+    output << "D" << endl << endl;
     return output;
 }
 

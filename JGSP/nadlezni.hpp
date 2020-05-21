@@ -10,6 +10,18 @@ public:
         ovlascenja = ovlas;
     }
 
+    Nadlezni(const Nadlezni &n){
+        imePrezime = n.imePrezime;
+        datumRodjenja = n.datumRodjenja;
+        JMBG = n.JMBG;
+        godineStaza = n.godineStaza;
+        pol = n.pol;
+        adresa = n.adresa;
+        mestoStanovanja = n.mestoStanovanja;
+        plata = n.plata;
+        ovlascenja = n.ovlascenja;
+    }
+
     string getIme() const{return imePrezime;}
     double getPlata() const{return plata;}
     int getGodineStaza() const{return godineStaza;}
@@ -19,7 +31,7 @@ public:
 
     void printRezime() const{
         Zaposleni::printRezime();
-        if (ovlascenja == true) cout << "Nadlezni koji ima ovlascenja za rukovodstvo bazom podataka."; return;
+        if (ovlascenja == true){cout << "Nadlezni koji ima ovlascenja za rukovodstvo bazom podataka."; return;}
         cout << "Nadlezni koji nema ovlascenja za rukovodstvo bazom podataka.";
     }
 

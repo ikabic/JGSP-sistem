@@ -87,9 +87,9 @@ public:
                 for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) cout << *i;
                 break;
             case 4:
-                for(auto o = sviVozaci.begin(); o != sviVozaci.end(); o++) cout << *o;
                 for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) cout << *i;
                 for(auto u = sviZaposleni.begin(); u != sviZaposleni.end(); u++) cout << *u;
+                for(auto o = sviVozaci.begin(); o != sviVozaci.end(); o++) cout << *o;
                 break;
             }
         }
@@ -132,6 +132,25 @@ public:
                 cout << line << " nije otpusten/a." << endl;
                 break;
         }
+    }
+
+    Nadlezni pronadjiNadleznog(string line, bool* b){
+        for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getIme() == line){*b = true; return *i;}
+        textcolor(8); cout << endl << "Nepostoji zaposleni sa takvim imenom. "; textcolor(7);
+        *b = false;
+        return *(sviNadlezni.begin());
+    }
+    Zaposleni pronadjiZaposlenog(string line, bool* b){
+        for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++) if(i -> getIme() == line){*b = true; return *i;}
+        textcolor(8); cout << endl << "Nepostoji zaposleni sa takvim imenom. "; textcolor(7);
+        *b = false;
+        return *(sviZaposleni.begin());
+    }
+    Vozac pronadjiVozaca(string line, bool* b){
+        for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getIme() == line){*b = true; return *i;}
+        textcolor(8); cout << endl << "Nepostoji zaposleni sa takvim imenom. "; textcolor(7);
+        *b = false;
+        return *(sviVozaci.begin());
     }
 
     void pretragaRezime(string line) const{

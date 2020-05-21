@@ -27,6 +27,17 @@ public:
         plata = plat;
     }
 
+    Zaposleni(const Zaposleni &z){
+        imePrezime = z.imePrezime;
+        datumRodjenja = z.datumRodjenja;
+        JMBG = z.JMBG;
+        godineStaza = z.godineStaza;
+        pol = z.pol;
+        adresa = z.adresa;
+        mestoStanovanja = z.mestoStanovanja;
+        plata = z.plata;
+    }
+
     string getIme() const{return imePrezime;}
     double getPlata() const{return plata;}
     int getGodineStaza() const{return godineStaza;}
