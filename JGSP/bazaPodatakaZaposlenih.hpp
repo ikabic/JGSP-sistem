@@ -47,32 +47,27 @@ public:
 
     void ucitajZaposlene(){
         Zaposleni z;
-        int i;
-        for(i = abs((int)(sviZaposleni.size() - brojRadnika("zaposleni.txt"))); i > 0; i--) sviZaposleni.push_back(z);
-        i = 0;
-        for(auto o = sviZaposleni.begin(); o != sviZaposleni.end(); o++){
-                o -> ucitajPreset("zaposleni.txt", i);
-                i++;}
+
+        for(int i = 0; i < brojRadnika("zaposleni.txt"); i++){
+            z.ucitajPreset("zaposleni.txt", i);
+            sviZaposleni.push_back(z);
+        }
     }
 
     void ucitajVozace(){
         Vozac v;
-        int i;
-        for(i = abs((int)(sviVozaci.size() - brojRadnika("vozaci.txt"))); i > 0; i--) sviVozaci.push_back(v);
-        i = 0;
-        for(auto o = sviVozaci.begin(); o != sviVozaci.end(); o++){
-                o -> ucitajPreset("vozaci.txt", i);
-                i++;}
+        for(int i = 0; i < brojRadnika("vozaci.txt"); i++){
+            v.ucitajPreset("vozaci.txt", i);
+            sviVozaci.push_back(v);
+        }
     }
 
     void ucitajNadlezne(){
         Nadlezni n;
-        int i;
-        for(i = abs((int)(sviNadlezni.size() - brojRadnika("nadlezni.txt"))); i > 0; i--) sviNadlezni.push_back(n);
-        i = 0;
-        for(auto o = sviNadlezni.begin(); o != sviNadlezni.end(); o++){
-                o -> ucitajPreset("nadlezni.txt", i);
-                i++;}
+        for(int i = 0; i < brojRadnika("nadlezni.txt"); i++){
+            n.ucitajPreset("nadlezni.txt", i);
+            sviNadlezni.push_back(n);
+        }
     }
 
     void ucitajSve(){

@@ -58,8 +58,8 @@ public:
         cout << "JMBG: " << JMBG << endl;
     }
 
-    virtual void ucitajPreset(string imeFajla, int l){
-        int i = 0;
+    virtual void ucitajPreset(string imeFajla, unsigned int l){
+        unsigned int i = 0;
         string line, line2;
         ifstream myFile(imeFajla);
         if (myFile.is_open()){
@@ -102,8 +102,8 @@ public:
                 while(line[i] != '|'){mestoStanovanja += line[i]; i++;} /// mesto stanovanja
                 i++;
                 line2 = "";
-                while(line[i] != '|'){line2 += line[i]; i++;} /// plata
-                i++;
+                while(i < strlen(line.c_str()) && line[i] != '|'){
+                        line2 += line[i]; i++;} /// plata
                 plata = atoi(line2.c_str());
                 line2 = "";
         }

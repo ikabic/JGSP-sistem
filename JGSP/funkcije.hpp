@@ -9,6 +9,12 @@ void textcolor(unsigned short color){
     SetConsoleTextAttribute(hcon,color);
 }
 
+bool prazanFile(string imeFajla){
+    ifstream myFile(imeFajla);
+    if(myFile.peek() == EOF) return true;
+    else return false;
+}
+
 int brojRadnika(string imeFajla){
     int i = 0;
     string line;
@@ -308,9 +314,9 @@ void start(BazaPodatakaZaposlenih &b){
     }
 }
 
-void resetujFile(string fileName){
+void resetujFile(string imeFajla){
         ofstream myFile;
-        myFile.open (fileName);
+        myFile.open (imeFajla);
         myFile.close();
 }
 
