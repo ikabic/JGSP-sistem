@@ -45,8 +45,10 @@
 		<Unit filename="nadlezni.hpp" />
 		<Unit filename="nadlezni.txt" />
 		<Unit filename="prodaja.hpp" />
+		<Unit filename="promene.txt" />
 		<Unit filename="saobracaj.hpp" />
 		<Unit filename="skladiste.hpp" />
+		<Unit filename="sviZaposleni.txt" />
 		<Unit filename="usluge.hpp" />
 		<Unit filename="vozac.hpp" />
 		<Unit filename="vozaci.txt" />

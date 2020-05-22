@@ -1,0 +1,62 @@
+Obicni zaposleni:
+Ime i prezime: Marko Markovic
+Datum rodjenja: 1.5.1998.
+JMBG: 0105998071239
+Godine staza: 3
+Pol: muski
+Adresa stanovanja: Bore Prodanovica 15a
+Mesto stanovanja: Novi Sad
+Plata: 65000
+
+Ime i prezime: Nikola Nikolic
+Datum rodjenja: 24.11.1976.
+JMBG: 2411976654668
+Godine staza: 8
+Pol: muski
+Adresa stanovanja: Bulevar cara Lazara 10
+Mesto stanovanja: Novi Sad
+Plata: 72000
+
+Ime i prezime: Marina Marinovic
+Datum rodjenja: 16.1.2000.
+JMBG: 16010002450
+Godine staza: 1
+Pol: zenski
+Adresa stanovanja: Milosa Crnjaskog 2
+Mesto stanovanja: Novi Sad
+Plata: 40000
+
+
+Vozaci:
+Ime i prezime: Jovan Jovanovic
+Datum rodjenja: 21.12.1974.
+JMBG: 2411535635466
+Godine staza: 3
+Pol: muski
+Adresa stanovanja: Cvetancika 14
+Mesto stanovanja: Novi Sad
+Plata: 52000
+Kategorija vozacke dozvole: B
+
+
+Nadlezni:
+Ime i prezime: Petar Petrovic
+Datum rodjenja: 11.11.1996.
+JMBG: 1111996655432
+Godine staza: 1
+Pol: muski
+Adresa stanovanja: Dambora 1b
+Mesto stanovanja: Jagodina
+Plata: 80000
+Ovlascenja: false
+
+Ime i prezime: Radivoje Radivojevic
+Datum rodjenja: 3.5.1962.
+JMBG: 0305962384568
+Godine staza: 10
+Pol: muski
+Adresa stanovanja: Zlatne Grede 4
+Mesto stanovanja: Novi Sad
+Plata: 92000
+Ovlascenja: true
+

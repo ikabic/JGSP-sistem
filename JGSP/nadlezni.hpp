@@ -22,11 +22,6 @@ public:
         ovlascenja = n.ovlascenja;
     }
 
-    string getIme() const{return imePrezime;}
-    double getPlata() const{return plata;}
-    int getGodineStaza() const{return godineStaza;}
-    Polovi getPol() const{return pol;}
-    string getMestoStanovanja() const{return mestoStanovanja;}
     bool getOvlascenje() const{return ovlascenja;}
 
     void printRezime() const{

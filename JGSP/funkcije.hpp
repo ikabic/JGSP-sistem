@@ -41,7 +41,7 @@ void meni(BazaPodatakaZaposlenih &b, Zaposleni* z, int a){
     textcolor(8); cout << i << ". "; textcolor(7); i++;
     cout << "Pregled rezimea" << endl;
 
-    if(a == 1){
+    if(a == 1 || a == 2 || a == 3){
         textcolor(8); cout << i << ". "; textcolor(7); i++;
         cout << "Prodaja dobara" << endl;
     }
@@ -71,7 +71,7 @@ void meni(BazaPodatakaZaposlenih &b, Zaposleni* z, int a){
 
     switch(x){
     case 0:
-        exit(0);
+        return;
     case 1:
         cout << "JGSP - lista svih zaposlenih" << endl;
         textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
@@ -96,12 +96,15 @@ void meni(BazaPodatakaZaposlenih &b, Zaposleni* z, int a){
         }
         break;
     case 3:
-        cout << "JGSP - pregled rezimea" << endl;
+        cout << "JGSP - prodaja dobara" << endl;
         textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
         break;
     case 4:
         break;
     case 5:
+        cout << "JGSP - pretraga zaposlenih po karakteristikama" << endl;
+        textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+        b.pretragaZaposlenih();
         break;
     case 6:
         break;

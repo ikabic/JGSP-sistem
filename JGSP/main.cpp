@@ -25,5 +25,6 @@ int main()
     BazaPodatakaZaposlenih b;
     b.ucitajSve();
     start(b);
+    b.upisiBazu();
     return 0;
 }

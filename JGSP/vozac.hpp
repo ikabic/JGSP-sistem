@@ -24,11 +24,6 @@ public:
         kategorijaVozacke = v.kategorijaVozacke;
     }
 
-    string getIme() const{return imePrezime;}
-    double getPlata() const{return plata;}
-    int getGodineStaza() const{return godineStaza;}
-    Polovi getPol() const{return pol;}
-    string getMestoStanovanja() const{return mestoStanovanja;}
     VozackaDozvola getVozackaDozvola() const{return kategorijaVozacke;}
 
     void printRezime() const{
