@@ -54,10 +54,11 @@
 1588620038 c:\users\ivona\desktop\jgsp\zaposleni.hpp
 	"datum.hpp"
 
-1590139279 source:c:\users\ivona\documents\github\jgsp-sistem\jgsp\main.cpp
+1590171173 source:c:\users\ivona\documents\github\jgsp-sistem\jgsp\main.cpp
 	<iostream>
 	<vector>
 	<fstream>
+	<sstream>
 	<windows.h>
 	<math.h>
 	<string>
@@ -79,7 +80,7 @@
 
 1588786822 c:\users\ivona\documents\github\jgsp-sistem\jgsp\gorivo.hpp
 
-1590097929 c:\users\ivona\documents\github\jgsp-sistem\jgsp\datum.hpp
+1590169404 c:\users\ivona\documents\github\jgsp-sistem\jgsp\datum.hpp
 
 1589982085 c:\users\ivona\documents\github\jgsp-sistem\jgsp\ekonomija.hpp
 	"prodaja.hpp"
@@ -108,19 +109,22 @@
 1588700598 c:\users\ivona\documents\github\jgsp-sistem\jgsp\saobracaj.hpp
 	"autobus.hpp"
 
-1590098024 c:\users\ivona\documents\github\jgsp-sistem\jgsp\zaposleni.hpp
+1590169495 c:\users\ivona\documents\github\jgsp-sistem\jgsp\zaposleni.hpp
 	"datum.hpp"
 	"bazaPodatakaZaposlenih.hpp"
 
-1590136181 c:\users\ivona\documents\github\jgsp-sistem\jgsp\vozac.hpp
+1590157091 c:\users\ivona\documents\github\jgsp-sistem\jgsp\vozac.hpp
 
-1590136181 c:\users\ivona\documents\github\jgsp-sistem\jgsp\nadlezni.hpp
+1590166883 c:\users\ivona\documents\github\jgsp-sistem\jgsp\nadlezni.hpp
 
-1590139570 c:\users\ivona\documents\github\jgsp-sistem\jgsp\bazapodatakazaposlenih.hpp
+1590171425 c:\users\ivona\documents\github\jgsp-sistem\jgsp\bazapodatakazaposlenih.hpp
 	"zaposleni.hpp"
 	"vozac.hpp"
 	"nadlezni.hpp"
 
-1590139380 c:\users\ivona\documents\github\jgsp-sistem\jgsp\funkcije.hpp
+1590171099 c:\users\ivona\documents\github\jgsp-sistem\jgsp\funkcije.hpp
 	"bazaPodatakaZaposlenih.hpp"
+	"formular.hpp"
+
+1590152278 c:\users\ivona\documents\github\jgsp-sistem\jgsp\formular.hpp
 

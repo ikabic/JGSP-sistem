@@ -17,6 +17,9 @@ public:
         godina = d.godina;
     }
 
+    int getDan() const{return dan;}
+    int getMesec() const{return mesec;}
+    int getGodina() const{return godina;}
     void setDan(int d){dan = d;}
     void setMesec(int m){mesec = m;}
     void setGodina(int g){godina = g;}

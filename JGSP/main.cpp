@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <sstream>
 #include <windows.h>
 #include <math.h>
 #include <string>
@@ -22,6 +23,7 @@ int Ekonomija::ukupnaPotrosnja = 0;
 
 int main()
 {
+    resetujIzvestaj();
     BazaPodatakaZaposlenih b;
     b.ucitajSve();
     start(b);

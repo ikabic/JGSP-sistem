@@ -5,7 +5,7 @@ class Nadlezni:public Zaposleni{
 protected:
     bool ovlascenja;
 public:
-    Nadlezni(bool ovlas = true, string imePrez = "", string jmbg = "", int godStaz = 0, Polovi p = muski, string adres = "", string mestoStan = "", double plat = 0, int d = 1, int m = 1, int g = 2000)
+    Nadlezni(bool ovlas = false, string imePrez = "", string jmbg = "", int godStaz = 0, Polovi p = muski, string adres = "", string mestoStan = "", double plat = 0, int d = 1, int m = 1, int g = 2000)
     :Zaposleni(imePrez, jmbg, godStaz, p, adres, mestoStan, plat, d, m, g){
         ovlascenja = ovlas;
     }
@@ -23,11 +23,12 @@ public:
     }
 
     bool getOvlascenje() const{return ovlascenja;}
+    void setOvlascenje(bool o){ovlascenja = o;}
 
     void printRezime() const{
         Zaposleni::printRezime();
-        if (ovlascenja == true){cout << "Nadlezni koji ima ovlascenja za rukovodstvo bazom podataka."; return;}
-        cout << "Nadlezni koji nema ovlascenja za rukovodstvo bazom podataka.";
+        if (ovlascenja == true){cout << "Nadlezni koji ima ovlascenja za rukovodstvo bazom podataka." << endl << endl; return;}
+        cout << "Nadlezni koji nema ovlascenja za rukovodstvo bazom podataka." << endl;
     }
 
     void ucitajPreset(string imeFajla, int l){

@@ -15,16 +15,34 @@ protected:
     vector <Zaposleni> sviZaposleni;
 public:
     void dodajZaposlenog(const Zaposleni &z){
+        ofstream myFile;
+        myFile.open ("promene.txt", ios_base::app);
         sviZaposleni.push_back(z);
-        cout << z.getIme() << " je zaposljen/a." << endl;
+        textcolor(8); cout << z.getIme() << " je zaposljen/a." << endl << endl; textcolor(7);
+        myFile << "> " << z.getIme() << " (obican zaposleni) je zaposljen/a." << endl;
+        myFile.close();
+
+        upisiFajlZaposleni();
     }
     void dodajNadleznog(const Nadlezni &n){
+        ofstream myFile;
+        myFile.open ("promene.txt", ios_base::app);
         sviNadlezni.push_back(n);
-        cout << n.getIme() << " je zaposljen/a." << endl;
+        textcolor(8); cout << n.getIme() << " je zaposljen/a." << endl << endl; textcolor(7);
+        myFile << "> " << n.getIme() << " (nadlezni) je zaposljen/a." << endl;
+        myFile.close();
+
+        upisiFajlNadlezni();
     }
     void dodajVozaca(const Vozac &v){
+        ofstream myFile;
+        myFile.open ("promene.txt", ios_base::app);
         sviVozaci.push_back(v);
-        cout << v.getIme() << " je zaposljen/a." << endl;
+        textcolor(8); cout << endl << v.getIme() << " je zaposljen/a." << endl << endl; textcolor(7);
+        myFile << "> " << v.getIme() << " (vozac) je zaposljen/a." << endl;
+        myFile.close();
+
+        upisiFajlVozaci();
     }
 
     void ucitajZaposlene(){
@@ -63,6 +81,45 @@ public:
         ucitajZaposlene();
     }
 
+    void upisiFajlZaposleni(){
+        ofstream myFile;
+        myFile.open ("zaposleni.txt");
+        for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++){
+                myFile << i -> getIme() << "|" << i -> getDan() << "|" << i -> getMesec() << "|" << i -> getGodina() << "|" << i -> getJMBG() << "|" << i -> getGodineStaza() << "|";
+                if(i -> getPol() == muski) myFile << "muski";
+                else myFile << "zenski";
+                myFile << "|" << i -> getAdresa() << "|" << i -> getMestoStanovanja() << "|" << i -> getPlata() << endl;
+        }
+        myFile.close();
+    }
+
+    void upisiFajlNadlezni(){
+        ofstream myFile;
+        myFile.open ("nadlezni.txt");
+        for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++){
+                myFile << i -> getIme() << "|" << i -> getDan() << "|" << i -> getMesec() << "|" << i -> getGodina() << "|" << i -> getJMBG() << "|" << i -> getGodineStaza() << "|";
+                if(i -> getPol() == muski) myFile << "muski";
+                else myFile << "zenski";
+                myFile << "|" << i -> getAdresa() << "|" << i -> getMestoStanovanja() << "|" << i -> getPlata() << "|" << i -> getOvlascenje() << endl;
+        }
+        myFile.close();
+    }
+
+    void upisiFajlVozaci(){
+        ofstream myFile;
+        myFile.open ("vozaci.txt");
+        for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++){
+                myFile << i -> getIme() << "|" << i -> getDan() << "|" << i -> getMesec() << "|" << i -> getGodina() << "|" << i -> getJMBG() << "|" << i -> getGodineStaza() << "|";
+                if(i -> getPol() == muski) myFile << "muski";
+                else myFile << "zenski";
+                myFile << "|" << i -> getAdresa() << "|" << i -> getMestoStanovanja() << "|" << i -> getPlata() << "|";
+                if(i -> getVozackaDozvola() == B) myFile << "B" << endl;
+                else if(i -> getVozackaDozvola() == C) myFile << "C" << endl;
+                else myFile << "D" << endl;
+        }
+        myFile.close();
+    }
+
     void ispisiZaposlene(int x) const{
         if(x == 0){
             cout << endl << endl;
@@ -95,43 +152,199 @@ public:
         }
     }
 
-    void otpustiZaposlenog(int x){
-        string line;
+    void pretragaRezime(string line) const{
+        int z = 0;
+        for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++) if(i -> getIme() == line){
+                z++;
+                if(z > 1) cout << endl;
+                i -> printRezime();
+        }
+        for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getIme() == line){i -> printRezime(); z++;}
+        for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getIme() == line){i -> printRezime(); z++;}
+        if(z == 0){textcolor(8); cout << "Nepostoji zaposleni sa takvim imenom." << endl; textcolor(7);}
+    }
+
+    void otpustiZaposlenog(int x, string line){
+        int y = 0, w;
+        string str;
         switch(x){
             case 1:
-                fflush(stdin);
-                cout << "> ";
-                getline(cin, line);
-                for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++) if(i -> getIme() == line){
-                        sviZaposleni.erase(i);
-                        cout << line << " je otpusten/a." << endl;
-                        return;
+                y = 0;
+                for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getIme() == line) y++;
+                if(y > 1){
+                    vector <Nadlezni> n;
+                    for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getIme() == line) n.push_back(*i);
+                    do{
+                        system("cls");
+                        cout << "JGSP - otpustanje zaposlenih" << endl;
+                        textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+                        cout << "Postoji vise zaposlenih s tim imenom, ukucajte redni broj od zaposlenog kog zelite da otpustite:" << endl << endl;
+                        pretragaRezime(line);
+                        textcolor(8); cout << endl << "> "; textcolor(7);
+                        cin >> w;
+                        cout << endl;
+                        if(w < 1 || w > y){
+                                cout << endl;
+                                textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od brojeva u intervalu [1," << y << "] !!!" << endl; textcolor(7);
+                                cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
+                                textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+                                while(!kbhit()){}
+                                getch();
+                        }
+                    }while(w < 1 || w > y);
+                    ofstream myFile;
+                    y = 0;
+                    for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getIme() == line){
+                            y++;
+                            if(y == w){
+                            if(i -> getOvlascenje() == true){
+                                textcolor(8); cout << endl << "Ne mozete otpustiti nadleznog koji je istog statusa kao Vi." << endl; textcolor(7);
+                                cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
+                                textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+                                while(!kbhit()){}
+                                getch();
+                                break;
+                            }
+                            sviNadlezni.erase(i);
+                            textcolor(8); cout << line << " je otpusten/a." << endl << endl; textcolor(7);
+                            myFile.open ("promene.txt", ios_base::app);
+                            myFile << "> " << i -> getIme() << " (nadlezni) je otpusten/a." << endl;
+                            myFile.close();
+                            return;
+                            }
+                    }
                 }
-                cout << line << " nije otpusten/a." << endl;
+                else{
+                        for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getIme() == line){
+                                if(i -> getOvlascenje() == true){
+                                textcolor(8); cout << endl << "Ne mozete otpustiti nadleznog koji je istog statusa kao Vi." << endl; textcolor(7);
+                                break;;
+                                }
+                                ofstream myFile;
+                                sviNadlezni.erase(i);
+                                textcolor(8); cout << endl << line << " je otpusten/a." << endl << endl; textcolor(7);
+                                myFile.open ("promene.txt", ios_base::app);
+                                myFile << "> " << i -> getIme() << " (nadlezni) je otpusten/a." << endl;
+                                myFile.close();
+                                return;
+                    }
+                    cout << endl;
+                    textcolor(8); cout << line << " nije otpusten/a." << endl << endl; textcolor(7);
+                }
+                upisiFajlNadlezni();
                 break;
             case 2:
-                fflush(stdin);
-                cout << "> ";
-                getline(cin, line);
-                for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getIme() == line){
-                        sviVozaci.erase(i);
-                        cout << line << " je otpusten/a." << endl;
-                        return;
+                y = 0;
+                for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++) if(i -> getIme() == line) y++;
+                if(y > 1){
+                    vector <Zaposleni> z;
+                    for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++) if(i -> getIme() == line) z.push_back(*i);
+                    do{
+                        system("cls");
+                        cout << "JGSP - otpustanje zaposlenih" << endl;
+                        textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+                        cout << "Postoji vise zaposlenih s tim imenom, ukucajte redni broj od zaposlenog kog zelite da otpustite:" << endl << endl;
+                        pretragaRezime(line);
+                        textcolor(8); cout << endl << "> "; textcolor(7);
+                        cin >> w;
+                        cout << endl;
+                        if(w < 1 || w > y){
+                                cout << endl;
+                                textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od brojeva u intervalu [1," << y << "] !!!" << endl; textcolor(7);
+                                cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
+                                textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+                                while(!kbhit()){}
+                                getch();
+                        }
+                    }while(w < 1 || w > y);
+                    ofstream myFile;
+                    y = 0;
+                    for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++) if(i -> getIme() == line){
+                            y++;
+                            if(y == w){
+                            sviZaposleni.erase(i);
+                            textcolor(8); cout << line << " je otpusten/a." << endl << endl; textcolor(7);
+                            myFile.open ("promene.txt", ios_base::app);
+                            myFile << "> " << i -> getIme() << " (nadlezni) je otpusten/a." << endl;
+                            myFile.close();
+                            return;
+                            }
+                    }
                 }
-                cout << line << " nije otpusten/a." << endl;
+                else{
+                        for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++) if(i -> getIme() == line){
+                                ofstream myFile;
+                                sviZaposleni.erase(i);
+                                textcolor(8); cout << endl << line << " je otpusten/a." << endl << endl; textcolor(7);
+                                myFile.open ("promene.txt", ios_base::app);
+                                myFile << "> " << i -> getIme() << " (obican zaposleni) je otpusten/a." << endl;
+                                myFile.close();
+                                return;
+                        }
+                cout << endl;
+                textcolor(8); cout << line << " nije otpusten/a." << endl << endl; textcolor(7);
+                }
+                upisiFajlZaposleni();
                 break;
             case 3:
-                fflush(stdin);
-                cout << "> ";
-                getline(cin, line);
-                for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getIme() == line){
-                        sviNadlezni.erase(i);
-                        cout << line << " je otpusten/a." << endl;
-                        return;
+                y = 0;
+                for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getIme() == line) y++;
+                if(y > 1){
+                    vector <Vozac> v;
+                    for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getIme() == line) v.push_back(*i);
+                    do{
+                        system("cls");
+                        cout << "JGSP - otpustanje zaposlenih" << endl;
+                        textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+                        cout << "Postoji vise zaposlenih s tim imenom, ukucajte redni broj od zaposlenog kog zelite da otpustite:" << endl << endl;
+                        pretragaRezime(line);
+                        textcolor(8); cout << "> "; textcolor(7);
+                        cin >> w;
+                        cout << endl;
+                        if(w < 1 || w > y){
+                                cout << endl;
+                                textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od brojeva u intervalu [1," << y << "] !!!" << endl; textcolor(7);
+                                cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
+                                textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+                                while(!kbhit()){}
+                                getch();
+                        }
+                    }while(w < 1 || w > y);
+                    ofstream myFile;
+                    y = 0;
+                    for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getIme() == line){
+                            y++;
+                            if(y == w){
+                            sviVozaci.erase(i);
+                            textcolor(8); cout << line << " je otpusten/a." << endl << endl; textcolor(7);
+                            myFile.open ("promene.txt", ios_base::app);
+                            myFile << "> " << i -> getIme() << " (nadlezni) je otpusten/a." << endl;
+                            myFile.close();
+                            return;
+                            }
+                    }
                 }
-                cout << line << " nije otpusten/a." << endl;
+                else{
+                        for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getIme() == line){
+                                ofstream myFile;
+                                sviVozaci.erase(i);
+                                cout << endl;
+                                textcolor(8); cout << line << " je otpusten/a." << endl << endl; textcolor(7);
+                                myFile.open ("promene.txt", ios_base::app);
+                                myFile << "> " << i -> getIme() << " (vozac) je otpusten/a." << endl;
+                                myFile.close();
+                                return;
+                        }
+                cout << endl;
+                textcolor(8); cout << line << " nije otpusten/a." << endl << endl; textcolor(7);
+                }
+                upisiFajlVozaci();
                 break;
         }
+
+        upisiFajlNadlezni();
+        upisiFajlZaposleni();
+        upisiFajlVozaci();
     }
 
     Nadlezni pronadjiNadleznog(string line, bool* b){
@@ -153,32 +366,24 @@ public:
         return *(sviVozaci.begin());
     }
 
-    void pretragaRezime(string line) const{
-        int z = 0;
-        for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++) if(i -> getIme() == line){i -> printRezime(); z++;}
-        for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getIme() == line){i -> printRezime(); z++;}
-        for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getIme() == line){i -> printRezime(); z++;}
-        if(z == 0){textcolor(8); cout << "Nepostoji zaposleni sa takvim imenom." << endl; textcolor(7);}
-    }
-
     void pretragaZaposlenih() const{
         int x, y, z;
         string line;
         double p;
         cout << "Opcije za pretragu: " << endl << endl; textcolor(7);
-        textcolor(8); cout  << "1. "; textcolor(7);
+        textcolor(8); cout  << "1.  "; textcolor(7);
         cout << "Pretraga po imenu zaposlenog" << endl;
-        textcolor(8); cout  << "2. "; textcolor(7);
+        textcolor(8); cout  << "2.  "; textcolor(7);
         cout << "Pretraga po plati zaposlenog" << endl;
-        textcolor(8); cout  << "3. "; textcolor(7);
+        textcolor(8); cout  << "3.  "; textcolor(7);
         cout << "Pretraga po godinama staza zaposlenog" << endl;
-        textcolor(8); cout  << "4. "; textcolor(7);
+        textcolor(8); cout  << "4.  "; textcolor(7);
         cout << "Pretraga po polu zaposlenog" << endl;
-        textcolor(8); cout  << "5. "; textcolor(7);
+        textcolor(8); cout  << "5.  "; textcolor(7);
         cout << "Pretraga po kategoriji vozacke dozvole zaposlenog" << endl;
-        textcolor(8); cout  << "6. "; textcolor(7);
+        textcolor(8); cout  << "6.  "; textcolor(7);
         cout << "Pretraga po mestu stanovanja zaposlenog" << endl;
-        textcolor(8); cout  << "7. "; textcolor(7);
+        textcolor(8); cout  << "7.  "; textcolor(7);
         cout << "Pretraga po ovlascenjima zaposlenog" << endl << endl;
         cout << "Ukucajte broj zeljenog nacina pretrage." << endl;
         textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
@@ -281,6 +486,71 @@ public:
                 break;
         }
     }
+
+    void dodeliOvlascenje(string line){
+    int y = 0, w = 0;
+    for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getIme() == line) y++;
+    if(y > 1){
+    vector <Nadlezni> n;
+    for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getIme() == line) n.push_back(*i);
+    do{
+            system("cls");
+            cout << "JGSP - dodeljivanje ovlascenja" << endl;
+            textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+            cout << "Postoji vise zaposlenih s tim imenom, ukucajte redni broj od zaposlenog kome zelite da dodelite ovlascenja:" << endl << endl;
+            pretragaRezime(line);
+            textcolor(8); cout << "> "; textcolor(7);
+            cin >> w;
+            cout << endl;
+            if(w < 1 || w > y){
+                    cout << endl;
+                    textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od brojeva u intervalu [1," << y << "] !!!" << endl; textcolor(7);
+                    cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
+                    textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+                    while(!kbhit()){}
+                    getch();
+            }
+        }while(w < 1 || w > y);
+    ofstream myFile;
+    y = 0;
+    for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getIme() == line){
+            y++;
+            if(y == w){
+                if(i -> getOvlascenje() == true){
+                    textcolor(8); cout << endl << "Ne mozete dodeliti ovlascenja nadleznom koji vec ima ovlascenja." << endl; textcolor(7);
+                    cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
+                    textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+                    while(!kbhit()){}
+                    getch();
+                    break;
+                }
+                i -> setOvlascenje(true);
+                textcolor(8); cout << line << " je dobio/la ovlascenja." << endl << endl; textcolor(7);
+                myFile.open ("promene.txt", ios_base::app);
+                myFile << "> " << i -> getIme() << " je dobio/la ovlascenja." << endl;
+                myFile.close();
+                return;
+            }
+        }
+    }
+    else{
+            for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getIme() == line){
+                    if(i -> getOvlascenje() == true){
+                        textcolor(8); cout << endl << "Ne mozete dodeliti ovlascenja nadleznom koji vec ima ovlascenja." << endl; textcolor(7);
+                        break;;
+                    }
+                    ofstream myFile;
+                    i -> setOvlascenje(true);
+                    textcolor(8); cout << endl << line << " je dobio/la ovlascenja." << endl << endl; textcolor(7);
+                    myFile.open ("promene.txt", ios_base::app);
+                    myFile << "> " << i -> getIme() << " je dobio/la ovlascenja." << endl;
+                    myFile.close();
+                    return;
+            }
+            cout << endl;
+            textcolor(8); cout << line << " nije dobio/la ovlascenja." << endl << endl; textcolor(7);
+    }
+}
 
     void upisiBazu(){
     ofstream myFile;

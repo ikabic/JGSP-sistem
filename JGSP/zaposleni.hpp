@@ -39,10 +39,15 @@ public:
     }
 
     string getIme() const{return imePrezime;}
+    int getDan() const{return datumRodjenja.getDan();}
+    int getMesec() const{return datumRodjenja.getMesec();}
+    int getGodina() const{return datumRodjenja.getGodina();}
     double getPlata() const{return plata;}
+    string getJMBG() const{return JMBG;}
     int getGodineStaza() const{return godineStaza;}
     Polovi getPol() const{return pol;}
     string getMestoStanovanja() const{return mestoStanovanja;}
+    string getAdresa() const{return adresa;}
 
     virtual void printRezime() const{
         cout << "Rezime - " << imePrezime << endl;

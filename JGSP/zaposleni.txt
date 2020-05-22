@@ -1,3 +1,4 @@
 Marko Markovic|1|5|1998|0105998071239|3|muski|Bore Prodanovica 15a|Novi Sad|65000
 Nikola Nikolic|24|11|1976|2411976654668|8|muski|Bulevar cara Lazara 10|Novi Sad|72000
 Marina Marinovic|16|1|2000|16010002450|1|zenski|Milosa Crnjaskog 2|Novi Sad|40000
+Milan Milankovic|2|3|2003|2345678|0|muski|uhgfdxs|uhgfds|45678

@@ -28,9 +28,9 @@ public:
 
     void printRezime() const{
         Zaposleni::printRezime();
-        if (kategorijaVozacke == 0){cout << "Vozac s vozackom dozvolom kategorije B."; return;}
-        else if (kategorijaVozacke == 1){cout << "Vozac s vozackom dozvolom kategorije C."; return;}
-        else cout << "Vozac s vozackom dozvolom kategorije D.";
+        if (kategorijaVozacke == 0){cout << "Vozac s vozackom dozvolom kategorije B." << endl << endl; return;}
+        else if (kategorijaVozacke == 1){cout << "Vozac s vozackom dozvolom kategorije C." << endl << endl; return;}
+        else cout << "Vozac s vozackom dozvolom kategorije D." << endl << endl;
     }
 
     void ucitajPreset(string imeFajla, int l){
