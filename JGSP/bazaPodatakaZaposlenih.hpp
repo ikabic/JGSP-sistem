@@ -210,6 +210,7 @@ public:
                             myFile.open ("promene.txt", ios_base::app);
                             myFile << "> " << i -> getIme() << " (nadlezni) je otpusten/a." << endl;
                             myFile.close();
+                            upisiFajlNadlezni();
                             return;
                             }
                     }
@@ -226,6 +227,7 @@ public:
                                 myFile.open ("promene.txt", ios_base::app);
                                 myFile << "> " << i -> getIme() << " (nadlezni) je otpusten/a." << endl;
                                 myFile.close();
+                                upisiFajlNadlezni();
                                 return;
                     }
                     cout << endl;
@@ -267,6 +269,7 @@ public:
                             myFile.open ("promene.txt", ios_base::app);
                             myFile << "> " << i -> getIme() << " (nadlezni) je otpusten/a." << endl;
                             myFile.close();
+                            upisiFajlZaposleni();
                             return;
                             }
                     }
@@ -279,6 +282,7 @@ public:
                                 myFile.open ("promene.txt", ios_base::app);
                                 myFile << "> " << i -> getIme() << " (obican zaposleni) je otpusten/a." << endl;
                                 myFile.close();
+                                upisiFajlZaposleni();
                                 return;
                         }
                 cout << endl;
@@ -320,6 +324,7 @@ public:
                             myFile.open ("promene.txt", ios_base::app);
                             myFile << "> " << i -> getIme() << " (nadlezni) je otpusten/a." << endl;
                             myFile.close();
+                            upisiFajlVozaci();
                             return;
                             }
                     }
@@ -333,6 +338,7 @@ public:
                                 myFile.open ("promene.txt", ios_base::app);
                                 myFile << "> " << i -> getIme() << " (vozac) je otpusten/a." << endl;
                                 myFile.close();
+                                upisiFajlVozaci();
                                 return;
                         }
                 cout << endl;

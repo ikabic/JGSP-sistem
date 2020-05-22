@@ -23,10 +23,12 @@ int Ekonomija::ukupnaPotrosnja = 0;
 
 int main()
 {
-    resetujIzvestaj();
+    resetujFile("promene.txt");
+    resetujFile("sviZaposleni.txt");
     BazaPodatakaZaposlenih b;
     b.ucitajSve();
     start(b);
     b.upisiBazu();
+    printLogs();
     return 0;
 }

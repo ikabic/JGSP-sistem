@@ -308,10 +308,9 @@ void start(BazaPodatakaZaposlenih &b){
     }
 }
 
-void resetujIzvestaj(){
+void resetujFile(string fileName){
         ofstream myFile;
-        myFile.open ("promene.txt");
-        myFile << "";
+        myFile.open (fileName);
         myFile.close();
 }
 
