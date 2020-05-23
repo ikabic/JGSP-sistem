@@ -27,7 +27,7 @@ void formular(BazaPodatakaZaposlenih &b, int a){
         mesec = atoi(smesec.c_str());
         godina = atoi(sgodina.c_str());
 
-        if(dan < 0 || dan > 32 || mesec < 0 || mesec > 13 || godina < 1954 || godina > 2021){
+        if(dan < 0 || dan > 32 || mesec < 0 || mesec > 13 || godina < 1954 || godina > 2001){
                 cout << endl << "Molim Vas unesite validan datum. Pritisnite bilo koje dugme za povratak." << endl;
                 textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
                 while(!kbhit()){}
@@ -39,7 +39,7 @@ void formular(BazaPodatakaZaposlenih &b, int a){
                 cout << ime << endl;
         }
 
-    }while(dan < 0 || dan > 32 || mesec < 0 || mesec > 13 || godina < 1954 || godina > 2021);
+    }while(dan < 0 || dan > 32 || mesec < 0 || mesec > 13 || godina < 1954 || godina > 2001);
 
     textcolor(8); cout << "JMBG novog zaposlenog: "; textcolor(7);
     fflush(stdin);

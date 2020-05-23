@@ -7,6 +7,7 @@
 
 int brojRadnika(string imeFajla);
 void textcolor(unsigned short color);
+vector<string> splitSen(string str, char c = '|');
 
 class BazaPodatakaZaposlenih{
 protected:
@@ -45,35 +46,46 @@ public:
         upisiFajlVozaci();
     }
 
-    void ucitajZaposlene(){
-        Zaposleni z;
-
-        for(int i = 0; i < brojRadnika("zaposleni.txt"); i++){
-            z.ucitajPreset("zaposleni.txt", i);
-            sviZaposleni.push_back(z);
-        }
-    }
-
-    void ucitajVozace(){
-        Vozac v;
-        for(int i = 0; i < brojRadnika("vozaci.txt"); i++){
-            v.ucitajPreset("vozaci.txt", i);
-            sviVozaci.push_back(v);
-        }
-    }
-
-    void ucitajNadlezne(){
-        Nadlezni n;
-        for(int i = 0; i < brojRadnika("nadlezni.txt"); i++){
-            n.ucitajPreset("nadlezni.txt", i);
-            sviNadlezni.push_back(n);
+    void ucitaj(string nazivFajla){
+        string line;
+        vector<string> v;
+        Polovi pol;
+        ifstream myFile(nazivFajla);
+        if(myFile.is_open()){
+            while(getline(myFile, line)){
+                    v = splitSen(line);
+                    if(v.at(6) == "muski") pol = muski;
+                    else pol = zenski;
+                    Zaposleni* z = new Zaposleni(v.at(0), v.at(4), atoi(v.at(5).c_str()), pol, v.at(7), v.at(8), atof(v.at(9).c_str()), atoi(v.at(1).c_str()), atoi(v.at(2).c_str()), atoi(v.at(3).c_str()));
+                    if(v.size() == 11){
+                        if(v.at(10) == "0" || v.at(10) == "1"){
+                                Nadlezni n(atoi(v.at(10).c_str()), *z);
+                                sviNadlezni.push_back(n);
+                        }
+                        else{
+                            if(v.at(10) == "B"){
+                                Vozac v(B, *z);
+                                sviVozaci.push_back(v);
+                            }
+                            else if(v.at(10) == "C"){
+                                Vozac v(C, *z);
+                                sviVozaci.push_back(v);
+                            }
+                            else{
+                                Vozac v(D, *z);
+                                sviVozaci.push_back(v);
+                            }
+                        }
+                    }
+                    else sviZaposleni.push_back(*z);
+            }
         }
     }
 
     void ucitajSve(){
-        ucitajNadlezne();
-        ucitajVozace();
-        ucitajZaposlene();
+        ucitaj("nadlezni.txt");
+        ucitaj("zaposleni.txt");
+        ucitaj("vozaci.txt");
     }
 
     void upisiFajlZaposleni(){
@@ -538,7 +550,7 @@ public:
             for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getIme() == line){
                     if(i -> getOvlascenje() == true){
                         textcolor(8); cout << endl << "Ne mozete dodeliti ovlascenja nadleznom koji vec ima ovlascenja." << endl; textcolor(7);
-                        break;;
+                        break;
                     }
                     ofstream myFile;
                     i -> setOvlascenje(true);

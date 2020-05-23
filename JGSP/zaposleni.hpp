@@ -58,58 +58,6 @@ public:
         cout << "JMBG: " << JMBG << endl;
     }
 
-    virtual void ucitajPreset(string imeFajla, unsigned int l){
-        unsigned int i = 0;
-        string line, line2;
-        ifstream myFile(imeFajla);
-        if (myFile.is_open()){
-            while(i <= l){getline(myFile,line); i++;}
-                i = 0;
-                imePrezime = "";
-                while(line[i] != '|'){imePrezime += line[i]; i++;} /// ime i prezime
-                i++;
-                line2 = "";
-                while(line[i] != '|'){line2 += line[i]; i++;} /// dan rodjenja
-                i++;
-                datumRodjenja.setDan(atoi(line2.c_str()));
-                line2 = "";
-                while(line[i] != '|'){line2 += line[i]; i++;} /// mesec rodjenja
-                i++;
-                datumRodjenja.setMesec(atoi(line2.c_str()));
-                line2 = "";
-                while(line[i] != '|'){line2 += line[i]; i++;} /// godina rodjenja
-                i++;
-                datumRodjenja.setGodina(atoi(line2.c_str()));
-                line2 = "";
-                JMBG = "";
-                while(line[i] != '|'){JMBG += line[i]; i++;} /// jmbg
-                i++;
-                line2 = "";
-                while(line[i] != '|'){line2 += line[i]; i++;} /// godine staza
-                i++;
-                godineStaza = atoi(line2.c_str());
-                line2 = "";
-                while(line[i] != '|'){line2 += line[i]; i++;} /// pol
-                if(line2 == "muski") pol = muski;
-                else pol = zenski;
-                i++;
-                line2 = "";
-                adresa = "";
-                while(line[i] != '|'){adresa += line[i]; i++;} /// adresa
-                i++;
-                line2 = "";
-                mestoStanovanja = "";
-                while(line[i] != '|'){mestoStanovanja += line[i]; i++;} /// mesto stanovanja
-                i++;
-                line2 = "";
-                while(i < strlen(line.c_str()) && line[i] != '|'){
-                        line2 += line[i]; i++;} /// plata
-                plata = atoi(line2.c_str());
-                line2 = "";
-        }
-        myFile.close();
-}
-
     friend ostream& operator<<(ostream& output, const Zaposleni &z);
 };
 

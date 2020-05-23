@@ -316,8 +316,23 @@ void start(BazaPodatakaZaposlenih &b){
 
 void resetujFile(string imeFajla){
         ofstream myFile;
-        myFile.open (imeFajla);
+        myFile.open(imeFajla);
+        myFile << "";
         myFile.close();
+}
+
+vector<string> splitSen(string str, char c){
+    string w = "";
+    vector<string> v;
+    for (auto rem : str){
+        if (rem == c){
+            v.push_back(w);
+            w = "";
+        }
+        else w=w+rem;
+    }
+    v.push_back(w);
+    return v;
 }
 
 #endif // FUNKCIJE_HPP_INCLUDED

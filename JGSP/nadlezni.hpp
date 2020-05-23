@@ -22,6 +22,8 @@ public:
         ovlascenja = n.ovlascenja;
     }
 
+    Nadlezni(bool ovlas, const Zaposleni &z): Zaposleni(z){ovlascenja = ovlas;}
+
     bool getOvlascenje() const{return ovlascenja;}
     void setOvlascenje(bool o){ovlascenja = o;}
 
@@ -29,24 +31,6 @@ public:
         Zaposleni::printRezime();
         if (ovlascenja == true){cout << "Nadlezni koji ima ovlascenja za rukovodstvo bazom podataka." << endl << endl; return;}
         cout << "Nadlezni koji nema ovlascenja za rukovodstvo bazom podataka." << endl;
-    }
-
-    void ucitajPreset(string imeFajla, int l){
-        Zaposleni::ucitajPreset(imeFajla, l);
-        int i = 0, u = 0;
-        string line, line2;
-        ifstream myFile(imeFajla);
-        if (myFile.is_open()){
-            while(i <= l){getline(myFile,line); i++;}
-            i = 0;
-            while(i != 10){
-                if(line[u] == '|') i++;
-                u++;
-            }
-            line2 = line[u];
-            ovlascenja = atoi(line2.c_str());
-        }
-        myFile.close();
     }
 
     friend ostream& operator<<(ostream& output, const Nadlezni &n);

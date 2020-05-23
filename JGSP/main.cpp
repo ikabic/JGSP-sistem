@@ -32,5 +32,5 @@ int main()
     b.upisiBazu();
 
     if(!prazanFile("promene.txt")) printLogs();
-    return 0;
+    //return 0;
 }

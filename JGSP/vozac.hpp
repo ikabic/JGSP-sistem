@@ -24,6 +24,8 @@ public:
         kategorijaVozacke = v.kategorijaVozacke;
     }
 
+    Vozac(VozackaDozvola kat, const Zaposleni &z): Zaposleni(z){kategorijaVozacke = kat;}
+
     VozackaDozvola getVozackaDozvola() const{return kategorijaVozacke;}
 
     void printRezime() const{
@@ -31,26 +33,6 @@ public:
         if (kategorijaVozacke == 0){cout << "Vozac s vozackom dozvolom kategorije B." << endl << endl; return;}
         else if (kategorijaVozacke == 1){cout << "Vozac s vozackom dozvolom kategorije C." << endl << endl; return;}
         else cout << "Vozac s vozackom dozvolom kategorije D." << endl << endl;
-    }
-
-    void ucitajPreset(string imeFajla, int l){
-        Zaposleni::ucitajPreset(imeFajla, l);
-        int i = 0, u = 0;
-        string line, line2;
-        ifstream myFile(imeFajla);
-        if (myFile.is_open()){
-            while(i <= l){getline(myFile,line); i++;}
-            i = 0;
-            while(i != 10){
-                if(line[u] == '|') i++;
-                u++;
-            }
-            line2 = line[u];
-            if(line2 == "B") kategorijaVozacke = B;
-            else if(line2 == "C") kategorijaVozacke = C;
-            else kategorijaVozacke = D;
-        }
-        myFile.close();
     }
 
     friend ostream& operator<<(ostream& output, const Vozac &v);
