@@ -26,6 +26,15 @@ Adresa stanovanja: Milosa Crnjaskog 2
 Mesto stanovanja: Novi Sad
 Plata: 40000
 
+Ime i prezime: Test
+Datum rodjenja: 2.3.2000.
+JMBG: 87654321
+Godine staza: 0
+Pol: muski
+Adresa stanovanja: hjkjhgfd
+Mesto stanovanja: hgf
+Plata: 37345
+
 
 Vozaci:
 Ime i prezime: Jovan Jovanovic

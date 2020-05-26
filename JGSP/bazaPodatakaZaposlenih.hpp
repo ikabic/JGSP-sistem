@@ -171,8 +171,9 @@ public:
         if(z == 0){textcolor(8); cout << "Nepostoji zaposleni sa takvim imenom." << endl; textcolor(7);}
     }
 
-    void otpustiZaposlenog(int x, string line){
+    void otpustiIliPovisicaZaposlenog(int x, string line, int c){
         int y = 0, w;
+        double pov;
         string str;
         switch(x){
             case 1:
@@ -183,9 +184,11 @@ public:
                     for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getIme() == line) n.push_back(*i);
                     do{
                         system("cls");
-                        cout << "JGSP - otpustanje zaposlenih" << endl;
+                        if(c == 1) cout << "JGSP - otpustanje zaposlenih" << endl;
+                        else cout << "JGSP - dodeljivanje povisica" << endl;
                         textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
-                        cout << "Postoji vise zaposlenih s tim imenom, ukucajte redni broj od zaposlenog kog zelite da otpustite:" << endl << endl;
+                        if(c == 1) cout << "Postoji vise zaposlenih s tim imenom, ukucajte redni broj od zaposlenog kog zelite da otpustite:" << endl << endl;
+                        else cout << "Postoji vise zaposlenih s tim imenom, ukucajte redni broj od zaposlenog kom zelite da date povisicu:" << endl << endl;
                         pretragaRezime(line);
                         textcolor(8); cout << endl << "> "; textcolor(7);
                         cin >> w;
@@ -197,6 +200,7 @@ public:
                                 textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
                                 while(!kbhit()){}
                                 getch();
+                                system("cls");
                         }
                     }while(w < 1 || w > y);
                     ofstream myFile;
@@ -204,42 +208,84 @@ public:
                     for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getIme() == line){
                             y++;
                             if(y == w){
-                            if(i -> getOvlascenje() == true){
-                                textcolor(8); cout << endl << "Ne mozete otpustiti nadleznog koji je istog statusa kao Vi." << endl; textcolor(7);
-                                cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
-                                textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
-                                while(!kbhit()){}
-                                getch();
+                            if(i -> getOvlascenje() == true || i -> getPlata() == 75000){
+                                if(c == 1){textcolor(8); cout << endl << "Ne mozete otpustiti nadleznog koji je istog statusa kao Vi." << endl; textcolor(7);}
+                                else{textcolor(8); cout << endl << "Ne mozete dati povisicu zaposlenom koji vec ima najvecu dozvoljenu platu." << endl; textcolor(7);}
                                 break;
                             }
-                            sviNadlezni.erase(i);
-                            textcolor(8); cout << line << " je otpusten/a." << endl << endl; textcolor(7);
+                            if(c == 1){
+                                sviNadlezni.erase(i);
+                                textcolor(8); cout << endl << line << " je otpusten/a."; textcolor(7);
+                            }
+                            else{
+                                cout << "Unesite kolicinu za koju zelite da povecate platu zaposlenog." << endl;
+                                textcolor(8); cout << "> "; textcolor(7);
+                                cin >> pov;
+                                if(((i -> getPlata()) + pov) > 75000 || pov < 1000){
+                                    cout << endl << "Povisica koju pokusavate da dodelite premasuje najvecu dozvoljenu platu, ili je manja od 1000." << endl; textcolor(7);
+                                    break;
+                                }
+                                i -> setPlata((i -> getPlata()) + pov);
+                                textcolor(8); cout << endl << endl << line << " je dobio/la povisicu od " << pov << " dinara." ; textcolor(7);
+                            }
                             myFile.open ("promene.txt", ios_base::app);
-                            myFile << "> " << i -> getIme() << " (nadlezni) je otpusten/a." << endl;
+                            if(c == 1) myFile << "> " << i -> getIme() << " (nadlezni) je otpusten/a." << endl;
+                            else  myFile << "> " << i -> getIme() << " je dobio/la povisicu od " << pov << " dinara." << endl;
                             myFile.close();
                             upisiFajlNadlezni();
+                            cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
+                            textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+                            while(!kbhit()){}
+                            getch();
+                            system("cls");
                             return;
                             }
                     }
                 }
                 else{
                         for(auto i = sviNadlezni.begin(); i != sviNadlezni.end(); i++) if(i -> getIme() == line){
-                                if(i -> getOvlascenje() == true){
-                                textcolor(8); cout << endl << "Ne mozete otpustiti nadleznog koji je istog statusa kao Vi." << endl; textcolor(7);
-                                break;;
+                                if(i -> getOvlascenje() == true || i -> getPlata() == 75000){
+                                if(c == 1){textcolor(8); cout << endl << "Ne mozete otpustiti nadleznog koji je istog statusa kao Vi." << endl; textcolor(7);}
+                                else{textcolor(8); cout << endl << "Ne mozete dati povisicu zaposlenom koji vec ima najvecu dozvoljenu platu." << endl; textcolor(7);}
+                                break;
                                 }
                                 ofstream myFile;
+                                if(c == 1){
                                 sviNadlezni.erase(i);
-                                textcolor(8); cout << endl << line << " je otpusten/a." << endl << endl; textcolor(7);
+                                textcolor(8); cout << endl << line << " je otpusten/a." << endl; textcolor(7);
+                                }
+                                else{
+                                cout << endl << "Unesite kolicinu za koju zelite da povecate platu zaposlenog." << endl;
+                                textcolor(8); cout << "> "; textcolor(7);
+                                cin >> pov;
+                                if(((i -> getPlata()) + pov) > 75000 || pov < 1000){
+                                    cout << endl << "Povisica koju pokusavate da dodelite premasuje najvecu dozvoljenu platu, ili je manja od 1000." << endl; textcolor(7);
+                                    break;
+                                }
+                                i -> setPlata((i -> getPlata()) + pov);
+                                textcolor(8); cout << endl << line << " je dobio/la povisicu od " << pov << " dinara." << endl; textcolor(7);
+                                }
                                 myFile.open ("promene.txt", ios_base::app);
-                                myFile << "> " << i -> getIme() << " (nadlezni) je otpusten/a." << endl;
+                                if(c == 1) myFile << "> " << i -> getIme() << " (nadlezni) je otpusten/a." << endl;
+                                else  myFile << "> " << i -> getIme() << " je dobio/la povisicu od " << pov << " dinara." << endl;
                                 myFile.close();
                                 upisiFajlNadlezni();
+                                cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
+                                textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+                                while(!kbhit()){}
+                                getch();
+                                system("cls");
                                 return;
                     }
                     cout << endl;
-                    textcolor(8); cout << line << " nije otpusten/a." << endl << endl; textcolor(7);
+                    if(c == 1){textcolor(8); cout << line << " nije otpusten/a." << endl; textcolor(7);}
+                    else{textcolor(8); cout << line << " nije dobio/la povisicu." << endl; textcolor(7);}
                 }
+                cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
+                textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+                while(!kbhit()){}
+                getch();
+                system("cls");
                 upisiFajlNadlezni();
                 break;
             case 2:
@@ -250,9 +296,11 @@ public:
                     for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++) if(i -> getIme() == line) z.push_back(*i);
                     do{
                         system("cls");
-                        cout << "JGSP - otpustanje zaposlenih" << endl;
+                        if(c == 1) cout << "JGSP - otpustanje zaposlenih" << endl;
+                        else cout << "JGSP - dodeljivanje povisica" << endl;
                         textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
-                        cout << "Postoji vise zaposlenih s tim imenom, ukucajte redni broj od zaposlenog kog zelite da otpustite:" << endl << endl;
+                        if(c == 1) cout << "Postoji vise zaposlenih s tim imenom, ukucajte redni broj od zaposlenog kog zelite da otpustite:" << endl << endl;
+                        else cout << "Postoji vise zaposlenih s tim imenom, ukucajte redni broj od zaposlenog kom zelite da date povisicu:" << endl << endl;
                         pretragaRezime(line);
                         textcolor(8); cout << endl << "> "; textcolor(7);
                         cin >> w;
@@ -264,6 +312,7 @@ public:
                                 textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
                                 while(!kbhit()){}
                                 getch();
+                                system("cls");
                         }
                     }while(w < 1 || w > y);
                     ofstream myFile;
@@ -271,11 +320,34 @@ public:
                     for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++) if(i -> getIme() == line){
                             y++;
                             if(y == w){
-                            sviZaposleni.erase(i);
-                            textcolor(8); cout << line << " je otpusten/a." << endl << endl; textcolor(7);
+                                if(i -> getPlata() == 75000){
+                                textcolor(8); cout << endl << "Ne mozete dati povisicu zaposlenom koji vec ima najvecu dozvoljenu platu." << endl; textcolor(7);
+                                break;
+                            }
+                            if(c == 1){
+                                sviZaposleni.erase(i);
+                                textcolor(8); cout << endl << line << " je otpusten/a." << endl; textcolor(7);
+                            }
+                            else{
+                                cout << "Unesite kolicinu za koju zelite da povecate platu zaposlenog." << endl;
+                                textcolor(8); cout << "> "; textcolor(7);
+                                cin >> pov;
+                                if(((i -> getPlata()) + pov) > 75000  || pov < 1000){
+                                    cout << endl << "Povisica koju pokusavate da dodelite premasuje najvecu dozvoljenu platu, ili je manja od 1000." << endl; textcolor(7);
+                                    break;
+                                }
+                                i -> setPlata((i -> getPlata()) + pov);
+                                textcolor(8); cout << endl << line << " je dobio/la povisicu od " << pov << " dinara." << endl; textcolor(7);
+                            }
                             myFile.open ("promene.txt", ios_base::app);
-                            myFile << "> " << i -> getIme() << " (nadlezni) je otpusten/a." << endl;
+                            if(c == 1) myFile << "> " << i -> getIme() << " (obican zaposleni) je otpusten/a." << endl;
+                            else  myFile << "> " << i -> getIme() << " je dobio/la povisicu od " << pov << " dinara." << endl;
                             myFile.close();
+                            cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
+                            textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+                            while(!kbhit()){}
+                            getch();
+                            system("cls");
                             upisiFajlZaposleni();
                             return;
                             }
@@ -283,18 +355,47 @@ public:
                 }
                 else{
                         for(auto i = sviZaposleni.begin(); i != sviZaposleni.end(); i++) if(i -> getIme() == line){
+                            if(i -> getPlata() == 75000){
+                                textcolor(8); cout << endl << "Ne mozete dati povisicu zaposlenom koji vec ima najvecu dozvoljenu platu." << endl; textcolor(7);
+                                break;
+                                }
                                 ofstream myFile;
+                                if(c == 1){
                                 sviZaposleni.erase(i);
-                                textcolor(8); cout << endl << line << " je otpusten/a." << endl << endl; textcolor(7);
+                                textcolor(8); cout << endl << line << " je otpusten/a." << endl; textcolor(7);
+                                }
+                                else{
+                                cout << endl << "Unesite kolicinu za koju zelite da povecate platu zaposlenog." << endl;
+                                textcolor(8); cout << "> "; textcolor(7);
+                                cin >> pov;
+                                if(((i -> getPlata()) + pov) > 75000  || pov < 1000){
+                                    cout << endl << "Povisica koju pokusavate da dodelite premasuje najvecu dozvoljenu platu, ili je manja od 1000." << endl; textcolor(7);
+                                    break;
+                                }
+                                i -> setPlata((i -> getPlata()) + pov);
+                                textcolor(8); cout << endl << line << " je dobio/la povisicu od " << pov << " dinara." << endl; textcolor(7);
+                                }
                                 myFile.open ("promene.txt", ios_base::app);
-                                myFile << "> " << i -> getIme() << " (obican zaposleni) je otpusten/a." << endl;
+                                if(c == 1) myFile << "> " << i -> getIme() << " (obican zaposleni) je otpusten/a." << endl;
+                                else  myFile << "> " << i -> getIme() << " je dobio/la povisicu od " << pov << " dinara." << endl;
                                 myFile.close();
+                                cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
+                                textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+                                while(!kbhit()){}
+                                getch();
+                                system("cls");
                                 upisiFajlZaposleni();
                                 return;
-                        }
-                cout << endl;
-                textcolor(8); cout << line << " nije otpusten/a." << endl << endl; textcolor(7);
+                    }
+                    cout << endl;
+                    if(c == 1){textcolor(8); cout << line << " nije otpusten/a." << endl; textcolor(7);}
+                    else{textcolor(8); cout << line << " nije dobio/la povisicu." << endl; textcolor(7);}
                 }
+                cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
+                textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+                while(!kbhit()){}
+                getch();
+                system("cls");
                 upisiFajlZaposleni();
                 break;
             case 3:
@@ -305,9 +406,11 @@ public:
                     for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getIme() == line) v.push_back(*i);
                     do{
                         system("cls");
-                        cout << "JGSP - otpustanje zaposlenih" << endl;
+                        if(c == 1) cout << "JGSP - otpustanje zaposlenih" << endl;
+                        else cout << "JGSP - dodeljivanje povisica" << endl;
                         textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
-                        cout << "Postoji vise zaposlenih s tim imenom, ukucajte redni broj od zaposlenog kog zelite da otpustite:" << endl << endl;
+                        if(c == 1) cout << "Postoji vise zaposlenih s tim imenom, ukucajte redni broj od zaposlenog kog zelite da otpustite:" << endl << endl;
+                        else cout << "Postoji vise zaposlenih s tim imenom, ukucajte redni broj od zaposlenog kom zelite da date povisicu:" << endl << endl;
                         pretragaRezime(line);
                         textcolor(8); cout << "> "; textcolor(7);
                         cin >> w;
@@ -319,6 +422,7 @@ public:
                                 textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
                                 while(!kbhit()){}
                                 getch();
+                                system("cls");
                         }
                     }while(w < 1 || w > y);
                     ofstream myFile;
@@ -326,11 +430,34 @@ public:
                     for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getIme() == line){
                             y++;
                             if(y == w){
-                            sviVozaci.erase(i);
-                            textcolor(8); cout << line << " je otpusten/a." << endl << endl; textcolor(7);
+                            if(i -> getPlata() == 75000){
+                                textcolor(8); cout << endl << "Ne mozete dati povisicu zaposlenom koji vec ima najvecu dozvoljenu platu." << endl; textcolor(7);
+                                break;
+                            }
+                            if(c == 1){
+                                sviVozaci.erase(i);
+                                textcolor(8); cout << endl << line << " je otpusten/a." << endl; textcolor(7);
+                            }
+                            else{
+                                cout<< "Unesite kolicinu za koju zelite da povecate platu zaposlenog." << endl;
+                                textcolor(8); cout << "> "; textcolor(7);
+                                cin >> pov;
+                                if(((i -> getPlata()) + pov) > 75000){
+                                    cout << endl << "Povisica koju pokusavate da dodelite premasuje najvecu dozvoljenu platu, ili je manja od 1000." << endl; textcolor(7);
+                                    break;
+                                }
+                                i -> setPlata((i -> getPlata()) + pov);
+                                textcolor(8); cout << endl << line << " je dobio/la povisicu od " << pov << " dinara." << endl; textcolor(7);
+                            }
                             myFile.open ("promene.txt", ios_base::app);
-                            myFile << "> " << i -> getIme() << " (nadlezni) je otpusten/a." << endl;
+                            if(c == 1) myFile << "> " << i -> getIme() << " (vozac) je otpusten/a." << endl;
+                            else  myFile << "> " << i -> getIme() << " je dobio/la povisicu od " << pov << " dinara." << endl;
                             myFile.close();
+                            cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
+                            textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+                            while(!kbhit()){}
+                            getch();
+                            system("cls");
                             upisiFajlVozaci();
                             return;
                             }
@@ -338,19 +465,47 @@ public:
                 }
                 else{
                         for(auto i = sviVozaci.begin(); i != sviVozaci.end(); i++) if(i -> getIme() == line){
+                                if(i -> getPlata() == 75000){
+                                textcolor(8); cout << endl << "Ne mozete dati povisicu zaposlenom koji vec ima najvecu dozvoljenu platu." << endl; textcolor(7);
+                                break;
+                                }
                                 ofstream myFile;
+                                if(c == 1){
                                 sviVozaci.erase(i);
-                                cout << endl;
-                                textcolor(8); cout << line << " je otpusten/a." << endl << endl; textcolor(7);
+                                textcolor(8); cout << endl << line << " je otpusten/a." << endl; textcolor(7);
+                                }
+                                else{
+                                cout << "Unesite kolicinu za koju zelite da povecate platu zaposlenog." << endl;
+                                textcolor(7); cout << "> "; textcolor(8);
+                                cin >> pov;
+                                if(((i -> getPlata()) + pov) > 75000 || pov < 1000){
+                                    cout << endl << "Povisica koju pokusavate da dodelite premasuje najvecu dozvoljenu platu, ili je manja od 1000." << endl; textcolor(7);
+                                    break;
+                                }
+                                i -> setPlata((i -> getPlata()) + pov);
+                                textcolor(8); cout << line << " je dobio/la povisicu od " << pov << " dinara." << endl << endl; textcolor(7);
+                                }
                                 myFile.open ("promene.txt", ios_base::app);
-                                myFile << "> " << i -> getIme() << " (vozac) je otpusten/a." << endl;
+                                if(c == 1) myFile << "> " << i -> getIme() << " (vozac) je otpusten/a." << endl;
+                                else  myFile << "> " << i -> getIme() << " je dobio/la povisicu od " << pov << " dinara." << endl;
                                 myFile.close();
                                 upisiFajlVozaci();
+                                cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
+                                textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+                                while(!kbhit()){}
+                                getch();
+                                system("cls");
                                 return;
-                        }
-                cout << endl;
-                textcolor(8); cout << line << " nije otpusten/a." << endl << endl; textcolor(7);
+                    }
+                    cout << endl;
+                    if(c == 1){textcolor(8); cout << line << " nije otpusten/a." << endl; textcolor(7);}
+                    else{textcolor(8); cout << line << " nije dobio/la povisicu." << endl; textcolor(7);}
                 }
+                cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
+                textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
+                while(!kbhit()){}
+                getch();
+                system("cls");
                 upisiFajlVozaci();
                 break;
         }

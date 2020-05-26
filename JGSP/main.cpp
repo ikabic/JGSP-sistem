@@ -27,8 +27,9 @@ int main()
     if(!prazanFile("sviZaposleni.txt")) resetujFile("sviZaposleni.txt");
 
     BazaPodatakaZaposlenih b;
+    Ekonomija e;
     b.ucitajSve();
-    start(b);
+    start(b, e);
     b.upisiBazu();
 
     if(!prazanFile("promene.txt")) printLogs();

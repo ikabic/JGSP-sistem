@@ -38,6 +38,7 @@ public:
         plata = z.plata;
     }
 
+    void setPlata(double pl){plata = pl;}
     string getIme() const{return imePrezime;}
     int getDan() const{return datumRodjenja.getDan();}
     int getMesec() const{return datumRodjenja.getMesec();}
