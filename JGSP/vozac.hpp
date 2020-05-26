@@ -32,7 +32,7 @@ public:
         Zaposleni::printRezime();
         if (kategorijaVozacke == 0){cout << "Vozac s vozackom dozvolom kategorije B." << endl << endl; return;}
         else if (kategorijaVozacke == 1){cout << "Vozac s vozackom dozvolom kategorije C." << endl << endl; return;}
-        else cout << "Vozac s vozackom dozvolom kategorije D." << endl << endl;
+        else cout << "Vozac s vozackom dozvolom kategorije D.";
     }
 
     friend ostream& operator<<(ostream& output, const Vozac &v);

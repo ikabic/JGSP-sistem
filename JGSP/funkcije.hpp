@@ -63,16 +63,16 @@ void meni(BazaPodatakaZaposlenih &b, Zaposleni* z, int a, Ekonomija &e){
 
     if(a == 1 || a == 2 || a == 3){
         textcolor(8); cout << i << ".  "; textcolor(7); i++;
-        cout << "Prodaja dobara" << endl;
+        cout << "Prodaja dobara (nedovrsena)" << endl;
     }
 
     if(a == 2 || a == 3){
         textcolor(8); cout << i << ".  "; textcolor(7); i++;
-        cout << "Nabavka resursa" << endl;
+        cout << "Nabavka resursa (nedovrsena)" << endl;
         textcolor(8); cout << i << ".  "; textcolor(7); i++;
         cout << "Pretraga zaposlenih po karakteristikama" << endl;
         textcolor(8); cout << i << ".  "; textcolor(7); i++;
-        cout << "Pregled podataka zaposlenih" << endl;
+        cout << "Pregled podataka zaposlenih (nedovrsena)" << endl;
         if(a == 3){
             textcolor(8); cout << i << ".  "; textcolor(7); i++;
             cout << "Zaposljavanje novih radnika" << endl;
@@ -107,8 +107,8 @@ void meni(BazaPodatakaZaposlenih &b, Zaposleni* z, int a, Ekonomija &e){
         textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
         if(a == 1 || a == 0){
                 cout << endl << endl;
-                b.pretragaRezime(z -> getIme());
-                cout << endl << endl;
+                z -> printRezime();
+                cout << endl;
         }
         else{
                 cout << "Unesite ime zaposlenog ciji rezime zelite da pregledate:" << endl;
@@ -116,20 +116,16 @@ void meni(BazaPodatakaZaposlenih &b, Zaposleni* z, int a, Ekonomija &e){
                 fflush(stdin);
                 getline(cin, line);
                 cout << endl;
-                b.pretragaRezime(line);
-                cout << endl << endl;
+                b.pretragaRezime(line, -1);
         }
         break;
     case 3:
+        textcolor(8); cout << endl << "Funkcija nije dovrsena." << endl << endl; textcolor(7);
+        break;
         if(a < 1){
                 cout << endl;
-                textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od ponudjenih brojeva !!!" << endl; textcolor(7);
-                cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
-                textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
-                while(!kbhit()){}
-                getch();
-                system("cls");
-                meni(b, z, a, e);
+                textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od ponudjenih brojeva !!!" << endl << endl; textcolor(7);
+                break;
         }
         system("cls");
         cout << "JGSP - prodaja dobara" << endl;
@@ -137,27 +133,19 @@ void meni(BazaPodatakaZaposlenih &b, Zaposleni* z, int a, Ekonomija &e){
         //e.prodajKartu()
         break;
     case 4:
+        textcolor(8); cout << endl << "Funkcija nije dovrsena." << endl << endl; textcolor(7);
+        break;
         if(a < 2){
                 cout << endl;
-                textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od ponudjenih brojeva !!!" << endl; textcolor(7);
-                cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
-                textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
-                while(!kbhit()){}
-                getch();
-                system("cls");
-                meni(b, z, a, e);
+                textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od ponudjenih brojeva !!!" << endl << endl; textcolor(7);
+                break;
         }
         break;
     case 5:
         if(a < 2){
                 cout << endl;
-                textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od ponudjenih brojeva !!!" << endl; textcolor(7);
-                cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
-                textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
-                while(!kbhit()){}
-                getch();
-                system("cls");
-                meni(b, z, a, e);
+                textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od ponudjenih brojeva !!!" << endl << endl; textcolor(7);
+                break;
         }
         system("cls");
         cout << "JGSP - pretraga zaposlenih po karakteristikama" << endl;
@@ -165,27 +153,19 @@ void meni(BazaPodatakaZaposlenih &b, Zaposleni* z, int a, Ekonomija &e){
         b.pretragaZaposlenih();
         break;
     case 6:
+        textcolor(8); cout << endl << "Funkcija nije dovrsena." << endl << endl; textcolor(7);
+        break;
          if(a < 2){
                 cout << endl;
-                textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od ponudjenih brojeva !!!" << endl; textcolor(7);
-                cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
-                textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
-                while(!kbhit()){}
-                getch();
-                system("cls");
-                meni(b, z, a, e);
+                textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od ponudjenih brojeva !!!" << endl << endl; textcolor(7);
+                break;
         }
         break;
     case 7:
         if(a < 3){
                 cout << endl;
-                textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od ponudjenih brojeva !!!" << endl; textcolor(7);
-                cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
-                textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
-                while(!kbhit()){}
-                getch();
-                system("cls");
-                meni(b, z, a, e);
+                textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od ponudjenih brojeva !!!" << endl << endl; textcolor(7);
+                break;
         }
         y = 0;
         do{
@@ -203,7 +183,7 @@ void meni(BazaPodatakaZaposlenih &b, Zaposleni* z, int a, Ekonomija &e){
             textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
             textcolor(8); cout << "> "; textcolor(7);
             cin >> y;
-            if(y < 1 && y > 3){
+            if(y < 1 || y > 3){
                 cout << endl;
                 textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od ponudjenih brojeva !!!" << endl; textcolor(7);
                 cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
@@ -211,20 +191,15 @@ void meni(BazaPodatakaZaposlenih &b, Zaposleni* z, int a, Ekonomija &e){
                 while(!kbhit()){}
                 getch();
             }
-        }while(y < 1 && y > 3);
+        }while(y < 1 || y > 3);
         system("cls");
         formular(b, y);
         break;
     case 8:
         if(a < 3){
                 cout << endl;
-                textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od ponudjenih brojeva !!!" << endl; textcolor(7);
-                cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
-                textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
-                while(!kbhit()){}
-                getch();
-                system("cls");
-                meni(b, z, a, e);
+                textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od ponudjenih brojeva !!!" << endl << endl; textcolor(7);
+                break;
         }
         w = 0;
         do{
@@ -262,18 +237,12 @@ void meni(BazaPodatakaZaposlenih &b, Zaposleni* z, int a, Ekonomija &e){
         fflush(stdin);
         getline(cin, line);
         b.otpustiIliPovisicaZaposlenog(w, line, 1);
-        meni(b, z, a, e);
         break;
     case 9:
         if(a < 3){
                 cout << endl;
-                textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od ponudjenih brojeva !!!" << endl; textcolor(7);
-                cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
-                textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
-                while(!kbhit()){}
-                getch();
-                system("cls");
-                meni(b, z, a, e);
+                textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od ponudjenih brojeva !!!" << endl << endl; textcolor(7);
+                break;
         }
         w = 0;
         do{
@@ -311,18 +280,12 @@ void meni(BazaPodatakaZaposlenih &b, Zaposleni* z, int a, Ekonomija &e){
         fflush(stdin);
         getline(cin, line);
         b.otpustiIliPovisicaZaposlenog(w, line, 2);
-        meni(b, z, a, e);
         break;
     case 10:
         if(a < 3){
                 cout << endl;
-                textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od ponudjenih brojeva !!!" << endl; textcolor(7);
-                cout << endl << "Pritisnite bilo koje dugme za povratak" << endl;
-                textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
-                while(!kbhit()){}
-                getch();
-                system("cls");
-                meni(b, z, a, e);
+                textcolor(8); cout << "!!! Nepostojeca funkcija, molim Vas unesite jedan od ponudjenih brojeva !!!" << endl << endl; textcolor(7);
+                break;
         }
         system("cls");
         cout << "JGSP - dodeljivanje ovlascenja" << endl;
@@ -333,12 +296,6 @@ void meni(BazaPodatakaZaposlenih &b, Zaposleni* z, int a, Ekonomija &e){
         getline(cin, line);
         b.dodeliOvlascenje(line);
         b.upisiFajlNadlezni();
-        cout << "Pritisnite bilo koje dugme za povratak" << endl;
-        textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
-        while(!kbhit()){}
-        getch();
-        system("cls");
-        meni(b, z, a, e);
         break;
     default:
         cout << endl;
@@ -351,7 +308,7 @@ void meni(BazaPodatakaZaposlenih &b, Zaposleni* z, int a, Ekonomija &e){
         meni(b, z, a, e);
     }
 
-    if(x > 0 && x < 9){
+    if(x > 0 && x < 11){
         cout << "Pritisnite bilo koje dugme za povratak na pocetni meni." << endl;
         textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
         while(!kbhit()){}
@@ -413,7 +370,7 @@ void start(BazaPodatakaZaposlenih &b, Ekonomija &e){
             start(b, e);
     }
     if(a == true){
-            textcolor(10); cout << "Pristup odobren." << endl; textcolor(7);
+            textcolor(10); cout << endl << "Pristup odobren." << endl; textcolor(7);
             cout << endl << "Pritisnite bilo koje dugme za nastavak." << endl;
             textcolor(6); cout << "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"; textcolor(7);
             while(!kbhit()){}

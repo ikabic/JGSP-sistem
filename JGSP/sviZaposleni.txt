@@ -26,15 +26,6 @@ Adresa stanovanja: Milosa Crnjaskog 2
 Mesto stanovanja: Novi Sad
 Plata: 40000
 
-Ime i prezime: Test
-Datum rodjenja: 2.3.2000.
-JMBG: 87654321
-Godine staza: 0
-Pol: muski
-Adresa stanovanja: hjkjhgfd
-Mesto stanovanja: hgf
-Plata: 37345
-
 
 Vozaci:
 Ime i prezime: Jovan Jovanovic
@@ -44,7 +35,7 @@ Godine staza: 3
 Pol: muski
 Adresa stanovanja: Cvetancika 14
 Mesto stanovanja: Novi Sad
-Plata: 52000
+Plata: 54000
 Kategorija vozacke dozvole: B
 
 
@@ -56,8 +47,8 @@ Godine staza: 10
 Pol: muski
 Adresa stanovanja: Zlatne Grede 4
 Mesto stanovanja: Novi Sad
-Plata: 92000
-Ovlascenja: true
+Plata: 62000
+Ovlascenja: false
 
 Ime i prezime: Stefan Stefanovic
 Datum rodjenja: 3.5.1962.
@@ -66,16 +57,6 @@ Godine staza: 10
 Pol: muski
 Adresa stanovanja: Zlatne Grede 4
 Mesto stanovanja: Novi Sad
-Plata: 92000
+Plata: 75000
 Ovlascenja: true
-
-Ime i prezime: Petar Petrovic
-Datum rodjenja: 11.11.1996.
-JMBG: 1111996655432
-Godine staza: 1
-Pol: muski
-Adresa stanovanja: Dambora 1b
-Mesto stanovanja: Jagodina
-Plata: 80000
-Ovlascenja: false
 
